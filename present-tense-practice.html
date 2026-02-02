@@ -9,63 +9,58 @@
 
   <style>
     :root {
-      /* Playful Focus Color Palette */
-      --bg: #F0F9FF;
-      --surface: #FFFFFF;
-      --text-primary: #0F172A;
-      --text-secondary: #475569;
-      --primary: #6366F1;
-      --primary-hover: #4F46E5;
-      --primary-light: rgba(99, 102, 241, 0.1);
-      --secondary: #F1F5F9;
-      --secondary-hover: #E2E8F0;
-      --accent: #0EA5E9;
-      --accent-light: rgba(14, 165, 233, 0.1);
-      --success: #22C55E;
-      --success-light: rgba(34, 197, 94, 0.1);
-      --error: #EF4444;
-      --error-light: rgba(239, 68, 68, 0.1);
-      --warning: #F59E0B;
-      --border: #E2E8F0;
-      --border-dark: #CBD5E1;
+      /* Dark + Orange Color Palette */
+      --bg: #1a1a1a;
+      --surface: #252525;
+      --surface-light: #2d2d2d;
+      --text-primary: #f5f5f5;
+      --text-secondary: #b0b0b0;
+      --primary: #ff8c00;
+      --primary-hover: #ff7000;
+      --primary-light: rgba(255, 140, 0, 0.15);
+      --secondary: #333333;
+      --secondary-hover: #404040;
+      --accent: #ffb347;
+      --accent-light: rgba(255, 179, 71, 0.15);
+      --success: #4ade80;
+      --success-light: rgba(74, 222, 128, 0.15);
+      --error: #f87171;
+      --error-light: rgba(248, 113, 113, 0.15);
+      --border: #404040;
+      --border-light: #4a4a4a;
 
       /* Present Simple / Present Continuous colors */
-      --ps-color: #0EA5E9;
-      --ps-hover: #0284C7;
-      --ps-light: rgba(14, 165, 233, 0.15);
-      --pc-color: #10B981;
-      --pc-hover: #059669;
-      --pc-light: rgba(16, 185, 129, 0.15);
+      --ps-color: #3b82f6;
+      --ps-hover: #2563eb;
+      --pc-color: #22c55e;
+      --pc-hover: #16a34a;
 
       /* Shadows */
-      --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-floating: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --shadow-primary: 0 4px 14px rgba(99, 102, 241, 0.35);
+      --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 20px rgba(255, 140, 0, 0.3);
 
       /* Focus */
-      --focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.4);
+      --focus-ring: 0 0 0 3px rgba(255, 140, 0, 0.5);
 
       /* Layout */
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --radius-xl: 28px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 18px;
       --radius-pill: 9999px;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; }
+    
     body {
+      min-height: 100%;
       font-family: 'Open Sans', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
       line-height: 1.5;
+      padding: 8px;
     }
 
     h1, h2, h3, .title, .stat, .btnPrimary, .btnSecondary, .smallBtn {
@@ -73,52 +68,55 @@
     }
 
     .container {
-      width: min(1200px, 100%);
-      min-height: calc(100vh - 32px);
-      max-height: 980px;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
       background: var(--surface);
       border-radius: var(--radius-xl);
-      padding: 20px;
-      box-shadow: var(--shadow-floating);
+      padding: 12px;
       border: 1px solid var(--border);
       display: grid;
-      grid-template-columns: 1fr 320px;
+      grid-template-columns: 1fr 260px;
       grid-template-rows: auto auto 1fr auto;
-      gap: 16px;
-      overflow: hidden;
+      gap: 10px;
+      min-height: calc(100vh - 16px);
     }
 
     /* Header */
     .header {
       grid-column: 1 / -1;
       display: flex;
-      gap: 16px;
+      gap: 12px;
       align-items: center;
+      padding: 8px;
+      background: var(--surface-light);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
     }
 
     .logo {
-      width: 56px;
-      height: 56px;
-      border-radius: var(--radius-lg);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
       background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-primary);
-      font-size: 28px;
+      box-shadow: var(--shadow-glow);
+      font-size: 22px;
+      flex-shrink: 0;
     }
 
     .title {
-      margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--text-primary);
     }
 
     .lead {
-      margin: 4px 0 0;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       color: var(--text-secondary);
+      margin-top: 2px;
     }
 
     .lead b {
@@ -131,38 +129,41 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
+      padding: 8px;
+      background: var(--surface-light);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
     }
 
     .statRow {
       display: flex;
-      gap: 12px;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
     .stat {
-      background: var(--surface);
-      border: 2px solid var(--border);
+      background: var(--secondary);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 10px 16px;
+      padding: 6px 10px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: var(--text-primary);
       display: flex;
       align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
+      gap: 6px;
     }
 
     .stat-icon {
-      width: 32px;
-      height: 32px;
+      width: 26px;
+      height: 26px;
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 13px;
     }
 
     .stat-score .stat-icon { background: var(--primary-light); }
@@ -170,11 +171,12 @@
     .stat-streak .stat-icon { background: var(--success-light); }
 
     .playerTag {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
       background: var(--secondary);
-      padding: 10px 16px;
+      padding: 6px 10px;
       border-radius: var(--radius-md);
+      border: 1px solid var(--border);
     }
 
     .playerTag strong {
@@ -188,21 +190,23 @@
       grid-row: 3 / 5;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding: 20px;
-      background: var(--secondary);
+      gap: 10px;
+      padding: 12px;
+      background: var(--surface-light);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
+      overflow-y: auto;
+      max-height: calc(100vh - 180px);
     }
 
     .inputRow {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .inputRow label {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 700;
       color: var(--text-secondary);
       text-transform: uppercase;
@@ -210,12 +214,12 @@
     }
 
     .inputRow input {
-      padding: 12px 16px;
+      padding: 8px 12px;
       border-radius: var(--radius-md);
-      border: 2px solid var(--border);
-      background: var(--surface);
+      border: 1px solid var(--border);
+      background: var(--secondary);
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-primary);
       transition: all 0.2s ease;
@@ -228,30 +232,27 @@
     }
 
     .inputRow input:disabled {
-      background: var(--secondary);
+      background: var(--surface);
       color: var(--text-secondary);
     }
 
     .lockedHint {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       color: var(--success);
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
 
     .controlsBtns {
       display: flex;
-      gap: 10px;
+      gap: 6px;
     }
 
     .btnPrimary, .btnSecondary {
       flex: 1;
-      padding: 14px 20px;
+      padding: 10px 14px;
       border-radius: var(--radius-md);
       font-weight: 800;
-      font-size: 0.95rem;
+      font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.2s ease;
       border: none;
@@ -260,83 +261,78 @@
     }
 
     .btnPrimary {
-      background: var(--primary);
-      color: white;
-      box-shadow: var(--shadow-primary);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+      color: #000;
+      box-shadow: var(--shadow-glow);
     }
 
     .btnPrimary:hover {
-      background: var(--primary-hover);
       transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 140, 0, 0.5);
     }
 
     .btnPrimary:focus-visible {
       outline: none;
-      box-shadow: var(--focus-ring), var(--shadow-primary);
+      box-shadow: var(--focus-ring);
     }
 
     .btnSecondary {
-      background: var(--surface);
+      background: var(--secondary);
       color: var(--text-primary);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
     }
 
     .btnSecondary:hover {
       background: var(--secondary-hover);
-      border-color: var(--border-dark);
-    }
-
-    .btnSecondary:focus-visible {
-      outline: none;
-      box-shadow: var(--focus-ring);
+      border-color: var(--border-light);
     }
 
     .toggles {
       display: flex;
-      gap: 20px;
-      font-size: 0.9rem;
+      gap: 12px;
+      font-size: 0.75rem;
       font-weight: 600;
     }
 
     .toggles label {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       cursor: pointer;
       color: var(--text-secondary);
     }
 
     .toggles input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       accent-color: var(--primary);
       cursor: pointer;
     }
 
     .tipBox {
-      padding: 16px;
+      padding: 10px;
       border-radius: var(--radius-md);
-      background: var(--surface);
+      background: var(--secondary);
       border: 1px solid var(--border);
-      font-size: 0.85rem;
-      line-height: 1.6;
+      font-size: 0.7rem;
+      line-height: 1.5;
       color: var(--text-secondary);
     }
 
     .tipBox b {
-      color: var(--text-primary);
+      color: var(--primary);
       display: block;
-      margin-bottom: 8px;
-      font-size: 0.9rem;
+      margin-bottom: 6px;
+      font-size: 0.75rem;
     }
 
     .bankStats {
-      padding: 16px;
+      padding: 10px;
       border-radius: var(--radius-md);
       background: var(--primary-light);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      font-size: 0.8rem;
-      line-height: 1.6;
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      font-size: 0.65rem;
+      line-height: 1.5;
       color: var(--text-secondary);
     }
 
@@ -348,159 +344,116 @@
     .game {
       grid-column: 1 / 2;
       grid-row: 3 / 4;
-      overflow: hidden;
       display: flex;
-      align-items: stretch;
-      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
       position: relative;
-    }
-
-    .gameInner {
-      width: 100%;
-      max-width: 820px;
-      height: 100%;
-      display: grid;
-      grid-template-rows:
-        minmax(140px, 0.4fr)
-        minmax(60px, auto)
-        minmax(200px, 1fr)
-        auto
-        auto;
-      gap: 14px;
+      min-height: 0;
       overflow: hidden;
     }
 
     /* Prompt Card */
     #card {
-      border-radius: var(--radius-xl);
-      padding: 24px;
-      background: linear-gradient(135deg, var(--primary) 0%, #818CF8 50%, var(--accent) 100%);
-      box-shadow: var(--shadow-floating), 0 0 40px rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary) 0%, #cc7000 50%, var(--accent) 100%);
+      box-shadow: var(--shadow-glow);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0%, transparent 40%);
-      pointer-events: none;
+      min-height: 100px;
+      flex-shrink: 0;
     }
 
     #cardLabel {
-      position: relative;
       font-family: 'Nunito', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      color: white;
-      padding: 8px 16px;
+      color: #000;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.3);
-      backdrop-filter: blur(8px);
-      margin-bottom: 12px;
+      background: rgba(0,0,0,0.2);
+      margin-bottom: 8px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     #cardText {
-      position: relative;
-      width: min(95%, 700px);
-      padding: 16px 20px;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.95);
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(0,0,0,0.85);
       color: var(--text-primary);
       font-family: 'Nunito', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.1rem, 2.2vw, 1.6rem);
-      line-height: 1.3;
-      box-shadow: var(--shadow-medium);
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      line-height: 1.4;
     }
 
     /* Order Box */
     #orderBox {
-      border: 2px dashed var(--border-dark);
-      border-radius: var(--radius-lg);
+      border: 2px dashed var(--border-light);
+      border-radius: var(--radius-md);
       background: var(--secondary);
-      padding: 14px;
-      min-height: 60px;
+      padding: 10px;
+      min-height: 50px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 6px;
       align-items: center;
       justify-content: center;
       font-weight: 600;
       color: var(--text-secondary);
-      font-size: 0.95rem;
-      transition: all 0.2s ease;
-    }
-
-    #orderBox:not(:empty) {
-      border-style: solid;
-      border-color: var(--primary);
-      background: var(--primary-light);
+      font-size: 0.8rem;
+      flex-shrink: 0;
     }
 
     /* Options Container */
     #options {
-      width: 100%;
-      border-radius: var(--radius-lg);
+      flex: 1;
+      min-height: 120px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border);
-      background: var(--surface);
-      padding: 16px;
-      overflow: hidden;
+      background: var(--surface-light);
+      padding: 12px;
+      overflow-y: auto;
     }
 
     /* Multiple Choice Mode */
     #options.mode-multiple {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 10px;
       align-content: center;
     }
 
     .choiceCard {
       border: none;
-      border-radius: var(--radius-lg);
-      padding: 20px;
+      border-radius: var(--radius-md);
+      padding: 14px;
       color: white;
       font-weight: 700;
       cursor: pointer;
       text-align: left;
       display: flex;
       align-items: center;
-      gap: 16px;
-      min-height: 100px;
+      gap: 12px;
+      min-height: 70px;
       box-shadow: var(--shadow-medium);
       transition: all 0.2s ease;
       position: relative;
-      overflow: hidden;
-    }
-
-    .choiceCard::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-      pointer-events: none;
     }
 
     .choiceCard:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-floating);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium), 0 0 15px rgba(255,255,255,0.1);
     }
 
     .choiceCard:focus-visible {
       outline: none;
-      box-shadow: var(--focus-ring), var(--shadow-floating);
+      box-shadow: var(--focus-ring);
     }
 
     .choiceCard:disabled {
@@ -510,30 +463,29 @@
     }
 
     .choiceIcon {
-      width: 52px;
-      height: 52px;
-      border-radius: var(--radius-md);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.3);
-      font-size: 24px;
+      font-size: 18px;
       flex-shrink: 0;
     }
 
     .choiceText {
       font-family: 'Nunito', sans-serif;
-      font-size: 1.1rem;
-      line-height: 1.3;
+      font-size: 0.95rem;
+      line-height: 1.2;
     }
 
     .choiceText small {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      opacity: 0.9;
-      margin-top: 4px;
+      opacity: 0.85;
+      margin-top: 2px;
     }
 
     .choicePS {
@@ -548,73 +500,75 @@
     #options.mode-order {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px;
       align-content: start;
       justify-content: center;
     }
 
     .orderWord {
       border: none;
-      border-radius: var(--radius-md);
-      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.85rem;
       cursor: pointer;
       color: var(--text-primary);
-      background: var(--surface);
-      border: 2px solid var(--border);
-      box-shadow: var(--shadow-soft);
+      background: var(--secondary);
+      border: 1px solid var(--border);
       transition: all 0.15s ease;
     }
 
     .orderWord:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: var(--primary);
-      box-shadow: var(--shadow-medium);
+      background: var(--secondary-hover);
     }
 
     .orderWord:focus-visible {
       outline: none;
       box-shadow: var(--focus-ring);
-      border-color: var(--primary);
     }
 
     .orderWord:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
       transform: none !important;
     }
 
     .orderWord.chosen {
-      color: white;
+      color: #000;
       background: var(--primary);
       border-color: var(--primary);
     }
 
     /* Selected Chips */
     .selChip {
-      padding: 10px 16px;
-      border-radius: var(--radius-md);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
       background: var(--primary);
-      color: white;
+      color: #000;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
+      font-size: 0.8rem;
       cursor: pointer;
       user-select: none;
       transition: all 0.15s ease;
-      box-shadow: var(--shadow-soft);
     }
 
     .selChip:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       background: var(--primary-hover);
     }
 
     /* Progress */
+    .progressSection {
+      flex-shrink: 0;
+    }
+
     .progressWrap {
       width: 100%;
-      height: 14px;
+      height: 10px;
       border-radius: var(--radius-pill);
       overflow: hidden;
       border: 1px solid var(--border);
@@ -624,7 +578,7 @@
     .progressBar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--success), #4ADE80, var(--success));
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
       background-size: 200% 100%;
       transition: width 350ms ease;
       border-radius: var(--radius-pill);
@@ -641,44 +595,39 @@
 
     .progressLabel {
       font-family: 'Nunito', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: var(--text-secondary);
       text-align: center;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     /* Controls Row */
     .controlsRow {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      flex-shrink: 0;
     }
 
     .smallBtn {
-      border: 2px solid var(--border);
-      background: var(--surface);
+      border: 1px solid var(--border);
+      background: var(--secondary);
       color: var(--text-primary);
       border-radius: var(--radius-md);
-      padding: 12px 20px;
+      padding: 8px 14px;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .smallBtn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       border-color: var(--primary);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .smallBtn:focus-visible {
-      outline: none;
-      box-shadow: var(--focus-ring);
     }
 
     .smallBtn:disabled {
@@ -687,15 +636,13 @@
       transform: none !important;
     }
 
-    /* CHECK Button - Big and Prominent */
     #checkOrder.smallBtn {
-      padding: 16px 32px !important;
-      font-size: 1.1rem !important;
-      min-width: 180px !important;
+      padding: 10px 24px !important;
+      font-size: 0.9rem !important;
       background: var(--primary) !important;
-      color: white !important;
+      color: #000 !important;
       border: none !important;
-      box-shadow: var(--shadow-primary) !important;
+      box-shadow: var(--shadow-glow) !important;
     }
 
     #checkOrder.smallBtn:hover {
@@ -708,7 +655,7 @@
 
     @keyframes checkPulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5); }
+      50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(255, 140, 0, 0.6) !important; }
     }
 
     /* Footer */
@@ -719,26 +666,26 @@
       justify-content: space-between;
       align-items: center;
       color: var(--text-secondary);
-      font-size: 0.85rem;
-      gap: 12px;
+      font-size: 0.7rem;
+      gap: 8px;
       flex-wrap: wrap;
-      padding-top: 8px;
+      padding: 6px 0;
     }
 
     /* Feedback Overlay */
     .fbOverlay {
-      position: absolute;
+      position: fixed;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(4px);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease;
-      z-index: 20;
-      border-radius: var(--radius-lg);
+      z-index: 100;
+      padding: 16px;
     }
 
     .fbOverlay.show {
@@ -747,12 +694,12 @@
     }
 
     .fbCard {
-      width: min(500px, 94%);
-      border-radius: var(--radius-xl);
-      padding: 28px;
+      width: min(400px, 100%);
+      border-radius: var(--radius-lg);
+      padding: 20px;
       background: var(--surface);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-floating);
+      box-shadow: var(--shadow-medium);
       text-align: center;
       animation: fbIn 0.25s ease both;
     }
@@ -766,81 +713,68 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .fbIcon {
-      width: 56px;
-      height: 56px;
-      border-radius: var(--radius-lg);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 22px;
     }
 
-    .fbIcon.success {
-      background: var(--success-light);
-    }
-
-    .fbIcon.error {
-      background: var(--error-light);
-    }
+    .fbIcon.success { background: var(--success-light); }
+    .fbIcon.error { background: var(--error-light); }
 
     .fbTitle {
       font-family: 'Nunito', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 800;
       margin: 0;
       color: var(--text-primary);
     }
 
     .fbSub {
-      margin: 16px auto 0;
-      font-size: 1rem;
+      margin: 12px auto 0;
+      font-size: 0.9rem;
       color: var(--text-primary);
       font-weight: 600;
       line-height: 1.4;
     }
 
     .fbDetail {
-      margin: 12px auto 0;
-      font-size: 0.9rem;
+      margin: 10px auto 0;
+      font-size: 0.8rem;
       color: var(--text-secondary);
       font-weight: 500;
-      line-height: 1.5;
+      line-height: 1.4;
       border-top: 1px solid var(--border);
-      padding-top: 12px;
+      padding-top: 10px;
       white-space: pre-line;
     }
 
     .fbBtnRow {
-      margin-top: 20px;
+      margin-top: 14px;
       display: flex;
       justify-content: center;
-      gap: 12px;
     }
 
     .fbBtn {
       border-radius: var(--radius-md);
-      padding: 12px 24px;
+      padding: 10px 20px;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
       cursor: pointer;
-      border: 2px solid var(--border);
-      background: var(--surface);
+      border: 1px solid var(--border);
+      background: var(--secondary);
       color: var(--text-primary);
       transition: all 0.2s ease;
     }
 
-    .fbBtn:hover {
-      background: var(--secondary);
-    }
-
-    .fbBtn:focus-visible {
-      outline: none;
-      box-shadow: var(--focus-ring);
-    }
+    .fbBtn:hover { background: var(--secondary-hover); }
 
     /* Celebration Overlay */
     .celebration-overlay {
@@ -849,20 +783,20 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(6px);
       z-index: 9999;
-      padding: 20px;
+      padding: 16px;
     }
 
     .celebration-card {
-      width: min(600px, 96%);
-      background: linear-gradient(135deg, var(--surface) 0%, #F8FAFC 100%);
-      border: 1px solid var(--border);
+      width: min(450px, 100%);
+      background: var(--surface);
+      border: 2px solid var(--primary);
       border-radius: var(--radius-xl);
-      padding: 40px;
+      padding: 30px;
       text-align: center;
-      box-shadow: var(--shadow-floating), 0 0 60px rgba(99, 102, 241, 0.2);
+      box-shadow: var(--shadow-glow);
       animation: celebrateIn 0.4s ease both;
     }
 
@@ -872,66 +806,79 @@
     }
 
     .celebration-icon {
-      font-size: 64px;
-      margin-bottom: 16px;
+      font-size: 50px;
+      margin-bottom: 12px;
       animation: bounce 0.6s ease infinite alternate;
     }
 
     @keyframes bounce {
       from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
+      to { transform: translateY(-8px); }
     }
 
     .celebration-title {
       font-family: 'Nunito', sans-serif;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 900;
       color: var(--primary);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .celebration-sub {
       color: var(--text-secondary);
       font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 24px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
     }
 
     .celebration-actions {
       display: flex;
-      gap: 16px;
+      gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
-    /* Responsive */
-    @media (max-width: 1020px) {
+    /* RESPONSIVE - Tablet */
+    @media (max-width: 900px) {
       .container {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto 1fr auto auto;
-        max-height: none;
       }
       .controlsPanel {
         grid-column: 1 / 2;
         grid-row: 5 / 6;
         flex-direction: row;
         flex-wrap: wrap;
+        max-height: none;
+        padding: 10px;
       }
-      .inputRow { width: calc(50% - 8px); }
+      .inputRow { width: calc(50% - 5px); }
       .controlsBtns { width: 100%; }
       .tipBox { width: 100%; }
       .bankStats { width: 100%; }
-      .toggles { width: 100%; }
+      .toggles { width: 100%; justify-content: center; }
+      .game { min-height: 350px; }
     }
 
-    @media (max-width: 640px) {
-      body { padding: 8px; }
-      .container { padding: 12px; gap: 12px; }
+    /* RESPONSIVE - Mobile */
+    @media (max-width: 600px) {
+      body { padding: 4px; }
+      .container { padding: 8px; gap: 8px; }
+      .header { padding: 6px; gap: 8px; }
+      .logo { width: 36px; height: 36px; font-size: 18px; }
+      .title { font-size: 0.95rem; }
+      .lead { font-size: 0.65rem; }
       .inputRow { width: 100%; }
       #options.mode-multiple { grid-template-columns: 1fr; }
-      .choiceCard { min-height: 80px; }
-      .header { flex-direction: column; text-align: center; }
-      .statRow { justify-content: center; }
+      .choiceCard { min-height: 60px; padding: 10px; }
+      .choiceIcon { width: 34px; height: 34px; font-size: 16px; }
+      .choiceText { font-size: 0.85rem; }
+      .choiceText small { font-size: 0.65rem; }
+      .statRow { width: 100%; justify-content: center; }
+      .playerTag { width: 100%; text-align: center; }
+      #card { padding: 12px; min-height: 80px; }
+      #cardText { font-size: 0.85rem; padding: 10px; }
+      .footer { justify-content: center; text-align: center; }
     }
 
     /* Reduced Motion */
@@ -943,23 +890,22 @@
       }
     }
 
-    /* Skip Link for Accessibility */
+    /* Skip Link */
     .skip-link {
       position: absolute;
       top: -40px;
       left: 0;
       background: var(--primary);
-      color: white;
-      padding: 8px 16px;
+      color: #000;
+      padding: 6px 12px;
       border-radius: 0 0 var(--radius-sm) var(--radius-sm);
       z-index: 100;
       font-weight: 700;
       text-decoration: none;
+      font-size: 0.8rem;
     }
 
-    .skip-link:focus {
-      top: 0;
-    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 
@@ -967,16 +913,14 @@
   <a href="#game" class="skip-link">Skip to Game</a>
 
   <div class="container" role="application" aria-label="Present tense practice game">
-    <!-- Header -->
     <div class="header">
       <div class="logo" aria-hidden="true">🎯</div>
       <div>
         <h1 class="title">Present Tense Practice</h1>
-        <p class="lead">Adaptive practice • Build your streak to <b>25 in a row</b> to win!</p>
+        <p class="lead">Build your streak to <b>25 in a row</b> to win!</p>
       </div>
     </div>
 
-    <!-- Topbar Stats -->
     <div class="topbar">
       <div class="statRow">
         <div class="stat stat-score" data-testid="score-stat">
@@ -992,20 +936,17 @@
           <span id="streakBox">Streak: 0</span>
         </div>
       </div>
-      <div class="playerTag">
-        Player: <strong id="playerName">—</strong>
-      </div>
+      <div class="playerTag">Player: <strong id="playerName">—</strong></div>
     </div>
 
-    <!-- Controls Panel -->
     <div class="controlsPanel">
       <div class="inputRow">
         <label for="studentName">Your Name</label>
-        <input id="studentName" data-testid="student-name-input" type="text" placeholder="Enter your name...">
+        <input id="studentName" data-testid="student-name-input" type="text" placeholder="Enter name...">
       </div>
 
       <div class="inputRow">
-        <label for="targetStreak">Target Streak</label>
+        <label for="targetStreak">Target</label>
         <input id="targetStreak" type="number" value="25" disabled>
         <div class="lockedHint">✓ Locked to 25</div>
       </div>
@@ -1016,234 +957,91 @@
       </div>
 
       <div class="toggles">
-        <label><input id="soundToggle" type="checkbox" checked> Sound FX</label>
+        <label><input id="soundToggle" type="checkbox" checked> Sound</label>
         <label><input id="musicToggle" type="checkbox" checked> Music</label>
       </div>
 
       <div class="tipBox">
         <b>📖 How to Play</b>
-        • Choose between <strong>Present Simple</strong> or <strong>Present Continuous</strong><br>
-        • Or arrange scrambled words in correct order<br>
-        • Click <strong>CHECK</strong> to submit your answer<br>
-        • Mistakes reset your streak to 0<br>
-        • Win by reaching <strong>25 correct in a row!</strong>
+        • Choose <strong>Present Simple</strong> or <strong>Present Continuous</strong><br>
+        • Or arrange scrambled words correctly<br>
+        • Click <strong>CHECK</strong> to submit<br>
+        • Mistakes reset streak to 0<br>
+        • Win at <strong>25 correct in a row!</strong>
       </div>
 
       <div class="bankStats" id="bankStats">
-        <b>🧠 Adaptive Engine:</b> Categories you miss will appear more often.
+        <b>🧠 Adaptive:</b> Missed categories appear more often.
       </div>
     </div>
 
-    <!-- Game Area -->
     <div id="game" class="game" role="main" aria-live="polite">
-      <!-- Feedback Overlay -->
-      <div id="feedbackOverlay" class="fbOverlay" aria-hidden="true">
-        <div class="fbCard" role="dialog" aria-modal="true" aria-label="Feedback popup">
-          <div class="fbTop">
-            <div class="fbIcon success" id="fbIcon">✅</div>
-            <h3 class="fbTitle" id="fbTitle">Nice!</h3>
-          </div>
-          <div class="fbSub" id="fbSub">Keep it going.</div>
-          <div class="fbDetail" id="fbDetail"></div>
-          <div class="fbBtnRow">
-            <button class="fbBtn" id="fbCloseBtn" type="button">Continue</button>
-          </div>
-        </div>
+      <div id="card" role="region" aria-label="Prompt card">
+        <div id="cardLabel">Ready</div>
+        <div id="cardText">Press START to begin!</div>
       </div>
 
-      <div class="gameInner">
-        <div id="card" role="region" aria-label="Prompt card">
-          <div id="cardLabel">Ready</div>
-          <div id="cardText">Press START to begin your practice!</div>
+      <div id="orderBox" aria-live="polite">Your sentence appears here...</div>
+      <div id="options" role="group" aria-label="Answer options"></div>
+
+      <div class="progressSection">
+        <div class="progressWrap">
+          <div id="progressBar" class="progressBar" style="width:0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
+        <div class="progressLabel" id="progressLabel">Progress: 0 / 25 (0%)</div>
+      </div>
 
-        <div id="orderBox" aria-live="polite">Your sentence will appear here...</div>
-
-        <div id="options" role="group" aria-label="Answer options"></div>
-
-        <div>
-          <div class="progressWrap" aria-hidden="false">
-            <div id="progressBar" class="progressBar" style="width:0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <div class="progressLabel" id="progressLabel">Progress: 0 / 25 (0%)</div>
-        </div>
-
-        <div class="controlsRow">
-          <button id="resetOrder" data-testid="reset-order-btn" class="smallBtn" style="display:none">Reset Order</button>
-          <button id="checkOrder" data-testid="check-order-btn" class="smallBtn" style="display:none">CHECK</button>
-          <button id="downloadReport" data-testid="download-btn" class="smallBtn" style="display:none">📊 Download CSV</button>
-        </div>
+      <div class="controlsRow">
+        <button id="resetOrder" data-testid="reset-order-btn" class="smallBtn" style="display:none">Reset</button>
+        <button id="checkOrder" data-testid="check-order-btn" class="smallBtn" style="display:none">CHECK</button>
+        <button id="downloadReport" data-testid="download-btn" class="smallBtn" style="display:none">📊 CSV</button>
       </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-      <div>Categories: Present Simple & Present Continuous</div>
-      <div>Goal: <span id="targetLabel">25</span> correct in a row</div>
+      <div>Categories: Present Simple & Continuous</div>
+      <div>Goal: <span id="targetLabel">25</span> correct</div>
+    </div>
+
+    <!-- Feedback Overlay -->
+    <div id="feedbackOverlay" class="fbOverlay" aria-hidden="true">
+      <div class="fbCard" role="dialog" aria-modal="true">
+        <div class="fbTop">
+          <div class="fbIcon success" id="fbIcon">✅</div>
+          <h3 class="fbTitle" id="fbTitle">Nice!</h3>
+        </div>
+        <div class="fbSub" id="fbSub">Keep going.</div>
+        <div class="fbDetail" id="fbDetail"></div>
+        <div class="fbBtnRow">
+          <button class="fbBtn" id="fbCloseBtn" type="button">Continue</button>
+        </div>
+      </div>
     </div>
 
     <!-- Celebration Overlay -->
     <div id="celebration" class="celebration-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="celebration-card" role="document">
+      <div class="celebration-card">
         <div class="celebration-icon">🏆</div>
         <div class="celebration-title">Perfect Streak!</div>
-        <div class="celebration-sub" id="celebrationSub">You reached 25 correct answers in a row!</div>
+        <div class="celebration-sub" id="celebrationSub">25 correct in a row!</div>
         <div class="celebration-actions">
-          <button id="celebrationDownload" class="btnSecondary" style="width:auto;padding:14px 24px">📊 Download Report</button>
-          <button id="celebrationRestart" class="btnPrimary" style="width:auto;padding:14px 24px">🔄 Play Again</button>
+          <button id="celebrationDownload" class="btnSecondary" style="padding:10px 16px">📊 Report</button>
+          <button id="celebrationRestart" class="btnPrimary" style="padding:10px 16px">🔄 Again</button>
         </div>
       </div>
     </div>
   </div>
 
 <script>
-/* ==========================================================
-   CONSTANTS
-========================================================== */
 const TARGET_STREAK = 25;
 
-/* ==========================================================
-   SENTENCE BANKS
-========================================================== */
 const BANKS = {
-  PS_aff: [
-    "She usually walks to school.",
-    "He plays the guitar every afternoon.",
-    "They enjoy quiet mornings together.",
-    "My cat sleeps on my backpack.",
-    "I like how this coffee smells.",
-    "We read the newspaper every morning.",
-    "The bus arrives at eight o'clock.",
-    "Tom studies French at university.",
-    "Anna works in a small bakery.",
-    "Birds fly south in winter.",
-    "The shop opens at nine every day.",
-    "He drinks green tea after lunch.",
-    "Students practice vocabulary every evening.",
-    "She always helps her neighbors.",
-    "The sun rises in the east.",
-    "He writes emails every morning.",
-    "We celebrate birthdays with cake.",
-    "The teacher explains the lesson clearly.",
-    "She takes the dog for a walk daily.",
-    "They visit the museum on weekends.",
-    "My brother cooks dinner on Fridays."
-  ],
-  PS_neg: [
-    "She doesn't like cold pizza.",
-    "They don't study on Sundays.",
-    "He does not enjoy long movies.",
-    "I don't drink soda anymore.",
-    "The cat doesn't sleep in its bed.",
-    "We don't watch TV at night.",
-    "He doesn't own a car.",
-    "She does not eat meat.",
-    "They don't arrive early.",
-    "I don't understand this word.",
-    "She doesn't answer her phone often.",
-    "We don't use that old computer anymore.",
-    "He doesn't believe the rumor.",
-    "They don't accept late homework.",
-    "I don't remember his name.",
-    "She doesn't drive to work.",
-    "He doesn't like loud music.",
-    "We don't go out when it rains.",
-    "The store doesn't open on Sundays.",
-    "He doesn't speak Spanish.",
-    "They don't play video games on school nights."
-  ],
-  PS_int: [
-    "Do you like spicy food?",
-    "Does she play the violin?",
-    "Do they live near here?",
-    "Does he enjoy swimming?",
-    "Do we have class today?",
-    "Do you speak English?",
-    "Does it rain a lot here?",
-    "Do they know the answer?",
-    "Does she work on Saturdays?",
-    "Do I need to bring a book?",
-    "Do you usually study in the morning?",
-    "Does he visit his grandparents every week?",
-    "Do they play chess after school?",
-    "Does she cook for the family?",
-    "Do we meet at the library?",
-    "Do you understand the instructions?",
-    "Does he take the train to work?",
-    "Do they practice every day?",
-    "Does she prefer tea or coffee?",
-    "Do I have to finish this today?",
-    "Do you remember the homework?"
-  ],
-  PC_aff: [
-    "She's studying English right now.",
-    "They are cooking dinner together.",
-    "He's drawing a robot at the moment.",
-    "I'm listening to music.",
-    "We're walking to the bus stop.",
-    "She is reading a new novel.",
-    "They are playing football in the park.",
-    "He is fixing his bicycle.",
-    "I'm watching a documentary.",
-    "We are preparing for the exam.",
-    "She is practicing the piano this afternoon.",
-    "They are building a model in the workshop.",
-    "He is cleaning his room right now.",
-    "I'm checking my email at the moment.",
-    "We are learning a new song today.",
-    "She is talking on the phone now.",
-    "They are planting flowers in the garden.",
-    "He is making a sandwich right now.",
-    "I'm writing my notes at the moment.",
-    "We are working on our project today.",
-    "She is waiting for the bus right now."
-  ],
-  PC_neg: [
-    "She isn't sleeping at the moment.",
-    "They aren't watching TV right now.",
-    "He is not studying today.",
-    "I'm not feeling well right now.",
-    "We aren't going out tonight.",
-    "She isn't using her laptop now.",
-    "They are not listening to the teacher.",
-    "He isn't playing football today.",
-    "I'm not working on that task right now.",
-    "We are not talking about that now.",
-    "She isn't wearing her jacket today.",
-    "They aren't doing their homework at the moment.",
-    "He is not driving right now.",
-    "I'm not texting anyone right now.",
-    "We aren't waiting anymore.",
-    "She isn't smiling today.",
-    "They are not cleaning the classroom now.",
-    "He isn't helping right now.",
-    "I'm not eating at the moment.",
-    "We aren't practicing today.",
-    "She isn't studying right now."
-  ],
-  PC_int: [
-    "Are you studying right now?",
-    "Is she working today?",
-    "Are they playing outside?",
-    "Is he watching TV at the moment?",
-    "Are we meeting after school?",
-    "Are you listening to me?",
-    "Is it raining right now?",
-    "Are they using their phones?",
-    "Is she taking notes now?",
-    "Am I doing this correctly?",
-    "Are you working on the project?",
-    "Is he wearing his uniform today?",
-    "Are they preparing for the test?",
-    "Is she talking too loudly?",
-    "Are we waiting for the bus?",
-    "Are you learning new vocabulary today?",
-    "Is he fixing his bike right now?",
-    "Are they studying in the library?",
-    "Is she writing an email now?",
-    "Are we doing the activity right now?",
-    "Are you feeling tired today?"
-  ]
+  PS_aff: ["She usually walks to school.","He plays the guitar every afternoon.","They enjoy quiet mornings together.","My cat sleeps on my backpack.","I like how this coffee smells.","We read the newspaper every morning.","The bus arrives at eight o'clock.","Tom studies French at university.","Anna works in a small bakery.","Birds fly south in winter.","The shop opens at nine every day.","He drinks green tea after lunch.","Students practice vocabulary every evening.","She always helps her neighbors.","The sun rises in the east.","He writes emails every morning.","We celebrate birthdays with cake.","The teacher explains the lesson clearly.","She takes the dog for a walk daily.","They visit the museum on weekends.","My brother cooks dinner on Fridays."],
+  PS_neg: ["She doesn't like cold pizza.","They don't study on Sundays.","He does not enjoy long movies.","I don't drink soda anymore.","The cat doesn't sleep in its bed.","We don't watch TV at night.","He doesn't own a car.","She does not eat meat.","They don't arrive early.","I don't understand this word.","She doesn't answer her phone often.","We don't use that old computer anymore.","He doesn't believe the rumor.","They don't accept late homework.","I don't remember his name.","She doesn't drive to work.","He doesn't like loud music.","We don't go out when it rains.","The store doesn't open on Sundays.","He doesn't speak Spanish.","They don't play video games on school nights."],
+  PS_int: ["Do you like spicy food?","Does she play the violin?","Do they live near here?","Does he enjoy swimming?","Do we have class today?","Do you speak English?","Does it rain a lot here?","Do they know the answer?","Does she work on Saturdays?","Do I need to bring a book?","Do you usually study in the morning?","Does he visit his grandparents every week?","Do they play chess after school?","Does she cook for the family?","Do we meet at the library?","Do you understand the instructions?","Does he take the train to work?","Do they practice every day?","Does she prefer tea or coffee?","Do I have to finish this today?","Do you remember the homework?"],
+  PC_aff: ["She's studying English right now.","They are cooking dinner together.","He's drawing a robot at the moment.","I'm listening to music.","We're walking to the bus stop.","She is reading a new novel.","They are playing football in the park.","He is fixing his bicycle.","I'm watching a documentary.","We are preparing for the exam.","She is practicing the piano this afternoon.","They are building a model in the workshop.","He is cleaning his room right now.","I'm checking my email at the moment.","We are learning a new song today.","She is talking on the phone now.","They are planting flowers in the garden.","He is making a sandwich right now.","I'm writing my notes at the moment.","We are working on our project today.","She is waiting for the bus right now."],
+  PC_neg: ["She isn't sleeping at the moment.","They aren't watching TV right now.","He is not studying today.","I'm not feeling well right now.","We aren't going out tonight.","She isn't using her laptop now.","They are not listening to the teacher.","He isn't playing football today.","I'm not working on that task right now.","We are not talking about that now.","She isn't wearing her jacket today.","They aren't doing their homework at the moment.","He is not driving right now.","I'm not texting anyone right now.","We aren't waiting anymore.","She isn't smiling today.","They are not cleaning the classroom now.","He isn't helping right now.","I'm not eating at the moment.","We aren't practicing today.","She isn't studying right now."],
+  PC_int: ["Are you studying right now?","Is she working today?","Are they playing outside?","Is he watching TV at the moment?","Are we meeting after school?","Are you listening to me?","Is it raining right now?","Are they using their phones?","Is she taking notes now?","Am I doing this correctly?","Are you working on the project?","Is he wearing his uniform today?","Are they preparing for the test?","Is she talking too loudly?","Are we waiting for the bus?","Are you learning new vocabulary today?","Is he fixing his bike right now?","Are they studying in the library?","Is she writing an email now?","Are we doing the activity right now?","Are you feeling tired today?"]
 };
 
 const BANK_META = [
@@ -1255,48 +1053,28 @@ const BANK_META = [
   { key:"PC_int", label:"Present Continuous — Interrogative", tense:"PC" },
 ];
 
-/* ==========================================================
-   STATE
-========================================================== */
 const el = (id) => document.getElementById(id);
 
 const state = {
-  running: false,
-  streak: 0,
-  score: 0,
-  seconds: 0,
-  timer: null,
+  running: false, streak: 0, score: 0, seconds: 0, timer: null,
   stats: Object.fromEntries(BANK_META.map(b => [b.key, {attempts:0, correct:0, wrong:0, recentWrong:0}])),
-  remediation: { bankKey: null, remaining: 0 },
-  lastBankKey: null,
-  round: null,
-  orderSelected: [],
-  log: [],
+  remediation: { bankKey: null, remaining: 0 }, lastBankKey: null,
+  round: null, orderSelected: [], log: [],
   recentByBank: Object.fromEntries(BANK_META.map(b => [b.key, []]))
 };
 
-/* ==========================================================
-   AUDIO
-========================================================== */
 function blip(ok) {
   if (!el("soundToggle").checked) return;
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const o = ctx.createOscillator();
     const g = ctx.createGain();
-    o.connect(g);
-    g.connect(ctx.destination);
-    o.type = "sine";
-    o.frequency.value = ok ? 880 : 280;
-    g.gain.value = 0.08;
-    o.start();
-    setTimeout(() => { o.stop(); ctx.close(); }, ok ? 120 : 180);
+    o.connect(g); g.connect(ctx.destination);
+    o.type = "sine"; o.frequency.value = ok ? 880 : 280; g.gain.value = 0.08;
+    o.start(); setTimeout(() => { o.stop(); ctx.close(); }, ok ? 120 : 180);
   } catch(e) {}
 }
 
-/* ==========================================================
-   UI UPDATES
-========================================================== */
 function updateHeader() {
   el("scoreBox").textContent = `Score: ${state.score}`;
   el("timerBox").textContent = `Time: ${state.seconds}s`;
@@ -1309,570 +1087,141 @@ function updateProgress() {
   el("progressBar").style.width = `${pct}%`;
   el("progressBar").setAttribute("aria-valuenow", pct);
   el("progressLabel").textContent = `Progress: ${state.streak} / ${TARGET_STREAK} (${pct}%)`;
-
-  if (state.running && state.streak > 0 && state.streak < TARGET_STREAK) {
-    el("progressBar").classList.add("moving");
-  } else {
-    el("progressBar").classList.remove("moving");
-  }
+  if (state.running && state.streak > 0 && state.streak < TARGET_STREAK) el("progressBar").classList.add("moving");
+  else el("progressBar").classList.remove("moving");
 }
 
-function escapeHtml(s) {
-  return String(s ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+function escapeHtml(s) { return String(s ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
 
 function updateBankStats() {
   const arr = BANK_META.map(b => {
-    const s = state.stats[b.key];
-    const acc = s.attempts ? (s.correct / s.attempts) : 1;
-    const weightHint = (s.recentWrong * 2) + (s.wrong) + (1 - acc) * 3;
-    return { key: b.key, label: b.label, wrong: s.wrong, recentWrong: s.recentWrong, acc, weightHint };
+    const s = state.stats[b.key]; const acc = s.attempts ? (s.correct / s.attempts) : 1;
+    return { key: b.key, label: b.label, wrong: s.wrong, recentWrong: s.recentWrong, acc, weightHint: (s.recentWrong * 2) + (s.wrong) + (1 - acc) * 3 };
   }).sort((a, b) => b.weightHint - a.weightHint);
-
-  const top = arr.slice(0, 2).map(x => {
-    const a = Math.round(x.acc * 100);
-    return `• <b>${escapeHtml(x.label)}</b> — ${a}% accuracy`;
-  }).join("<br>");
-
-  el("bankStats").innerHTML = `<b>🧠 Adaptive Engine:</b><br>${top}<br><span style="opacity:0.8">Categories you miss appear more often.</span>`;
+  const top = arr.slice(0, 2).map(x => `• <b>${escapeHtml(x.label)}</b> — ${Math.round(x.acc * 100)}%`).join("<br>");
+  el("bankStats").innerHTML = `<b>🧠 Adaptive:</b><br>${top}`;
 }
 
-function setCard(label, text) {
-  el("cardLabel").textContent = label;
-  el("cardText").textContent = text;
-}
+function setCard(label, text) { el("cardLabel").textContent = label; el("cardText").textContent = text; }
+function shuffle(arr) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function normalizeSentence(s) { return String(s).trim().replace(/\s+/g, " "); }
 
-function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function normalizeSentence(s) {
-  return String(s).trim().replace(/\s+/g, " ");
-}
-
-/* ==========================================================
-   SENTENCE PICKER (no repeats)
-========================================================== */
-const RECENT_LIMIT = 8;
-const REROLL_TRIES = 12;
-
+const RECENT_LIMIT = 8, REROLL_TRIES = 12;
 function pickSentenceNoRepeat(bankKey) {
-  const bank = BANKS[bankKey];
-  const recent = state.recentByBank[bankKey] || [];
-
+  const bank = BANKS[bankKey]; const recent = state.recentByBank[bankKey] || [];
   let chosen = bank[Math.floor(Math.random() * bank.length)];
   if (bank.length <= 1) return chosen;
-
-  for (let t = 0; t < REROLL_TRIES; t++) {
-    const candidate = bank[Math.floor(Math.random() * bank.length)];
-    if (!recent.includes(candidate)) {
-      chosen = candidate;
-      break;
-    }
-    chosen = candidate;
-  }
-
-  recent.push(chosen);
-  while (recent.length > RECENT_LIMIT) recent.shift();
-  state.recentByBank[bankKey] = recent;
-
+  for (let t = 0; t < REROLL_TRIES; t++) { const candidate = bank[Math.floor(Math.random() * bank.length)]; if (!recent.includes(candidate)) { chosen = candidate; break; } chosen = candidate; }
+  recent.push(chosen); while (recent.length > RECENT_LIMIT) recent.shift(); state.recentByBank[bankKey] = recent;
   return chosen;
 }
 
-/* ==========================================================
-   ADAPTIVE BANK PICKER
-========================================================== */
 function pickBankKey() {
-  if (state.remediation.remaining > 0 && state.remediation.bankKey) {
-    state.remediation.remaining--;
-    return state.remediation.bankKey;
-  }
-
-  const weights = BANK_META.map(b => {
-    const st = state.stats[b.key];
-    const acc = st.attempts ? (st.correct / st.attempts) : 0.75;
-    let w = 1.0;
-    w += st.wrong * 0.35;
-    w += st.recentWrong * 0.75;
-    w += (1 - acc) * 2.2;
-    if (st.attempts === 0) w += 1.2;
-    if (state.lastBankKey === b.key) w *= 0.65;
-    return { key: b.key, w };
-  });
-
-  const sum = weights.reduce((a, x) => a + x.w, 0);
-  let r = Math.random() * sum;
-  for (const x of weights) {
-    r -= x.w;
-    if (r <= 0) return x.key;
-  }
-  return weights[weights.length - 1].key;
+  if (state.remediation.remaining > 0 && state.remediation.bankKey) { state.remediation.remaining--; return state.remediation.bankKey; }
+  const weights = BANK_META.map(b => { const st = state.stats[b.key]; const acc = st.attempts ? (st.correct / st.attempts) : 0.75; let w = 1.0; w += st.wrong * 0.35; w += st.recentWrong * 0.75; w += (1 - acc) * 2.2; if (st.attempts === 0) w += 1.2; if (state.lastBankKey === b.key) w *= 0.65; return { key: b.key, w }; });
+  const sum = weights.reduce((a, x) => a + x.w, 0); let r = Math.random() * sum;
+  for (const x of weights) { r -= x.w; if (r <= 0) return x.key; } return weights[weights.length - 1].key;
 }
 
-/* ==========================================================
-   ROUND BUILDER
-========================================================== */
 function makeRound() {
-  const bankKey = pickBankKey();
-  const meta = BANK_META.find(x => x.key === bankKey);
-  const sentence = pickSentenceNoRepeat(bankKey);
-
-  const orderChance = state.streak >= 12 ? 0.30 : 0.20;
-  const mode = Math.random() < orderChance ? "order" : "multiple";
-
+  const bankKey = pickBankKey(); const meta = BANK_META.find(x => x.key === bankKey); const sentence = pickSentenceNoRepeat(bankKey);
+  const orderChance = state.streak >= 12 ? 0.30 : 0.20; const mode = Math.random() < orderChance ? "order" : "multiple";
   state.lastBankKey = bankKey;
-
-  if (mode === "multiple") {
-    return { mode, bankKey, sentence, correctTense: meta.tense };
-  }
-
-  const targetWords = normalizeSentence(sentence).split(" ");
-  const orderWords = shuffle(targetWords);
+  if (mode === "multiple") return { mode, bankKey, sentence, correctTense: meta.tense };
+  const targetWords = normalizeSentence(sentence).split(" "); const orderWords = shuffle(targetWords);
   return { mode: "order", bankKey, sentence, targetWords, orderWords };
 }
 
-/* ==========================================================
-   RENDER
-========================================================== */
-function clearOptions() {
-  el("options").className = "";
-  el("options").innerHTML = "";
-}
+function clearOptions() { el("options").className = ""; el("options").innerHTML = ""; }
 
 function renderSelectedChips() {
-  const box = el("orderBox");
-  box.innerHTML = "";
-
-  if (state.orderSelected.length === 0) {
-    box.textContent = "Tap words below to build your sentence...";
-    box.style.borderStyle = "dashed";
-    box.style.borderColor = "var(--border-dark)";
-    box.style.background = "var(--secondary)";
-    return;
-  }
-
-  box.style.borderStyle = "solid";
-  box.style.borderColor = "var(--primary)";
-  box.style.background = "var(--primary-light)";
-
-  state.orderSelected.forEach((it, i) => {
-    const chip = document.createElement("span");
-    chip.className = "selChip";
-    chip.textContent = it.word;
-    chip.title = "Click to remove";
-    chip.setAttribute("role", "button");
-    chip.setAttribute("tabindex", "0");
-    chip.onclick = () => removeSelectedAt(i);
-    chip.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") removeSelectedAt(i); };
-    box.appendChild(chip);
-  });
+  const box = el("orderBox"); box.innerHTML = "";
+  if (state.orderSelected.length === 0) { box.textContent = "Tap words to build sentence..."; return; }
+  state.orderSelected.forEach((it, i) => { const chip = document.createElement("span"); chip.className = "selChip"; chip.textContent = it.word; chip.onclick = () => removeSelectedAt(i); box.appendChild(chip); });
 }
 
-function removeSelectedAt(i) {
-  if (!state.running) return;
-  const removed = state.orderSelected.splice(i, 1)[0];
-
-  el("options").querySelectorAll(".orderWord").forEach(b => {
-    if (b.dataset.idx === String(removed.idx)) {
-      b.disabled = false;
-      b.classList.remove("chosen");
-    }
-  });
-  renderSelectedChips();
-}
-
-function pickWord(idx, word, btn) {
-  if (!state.running) return;
-  btn.disabled = true;
-  btn.classList.add("chosen");
-  state.orderSelected.push({ idx, word });
-  renderSelectedChips();
-}
-
-function resetOrder() {
-  if (!state.running) return;
-  state.orderSelected = [];
-  el("options").querySelectorAll(".orderWord").forEach(b => {
-    b.disabled = false;
-    b.classList.remove("chosen");
-  });
-  renderSelectedChips();
-}
+function removeSelectedAt(i) { if (!state.running) return; const removed = state.orderSelected.splice(i, 1)[0]; el("options").querySelectorAll(".orderWord").forEach(b => { if (b.dataset.idx === String(removed.idx)) { b.disabled = false; b.classList.remove("chosen"); } }); renderSelectedChips(); }
+function pickWord(idx, word, btn) { if (!state.running) return; btn.disabled = true; btn.classList.add("chosen"); state.orderSelected.push({ idx, word }); renderSelectedChips(); }
+function resetOrder() { if (!state.running) return; state.orderSelected = []; el("options").querySelectorAll(".orderWord").forEach(b => { b.disabled = false; b.classList.remove("chosen"); }); renderSelectedChips(); }
 
 function renderRound() {
-  clearOptions();
-  state.orderSelected = [];
-
-  const meta = BANK_META.find(x => x.key === state.round.bankKey);
-  updateBankStats();
-
+  clearOptions(); state.orderSelected = []; const meta = BANK_META.find(x => x.key === state.round.bankKey); updateBankStats();
   if (state.round.mode === "multiple") {
     setCard(meta.label, state.round.sentence);
-
-    el("orderBox").textContent = "Multiple choice round - select your answer below!";
-    el("orderBox").style.borderStyle = "dashed";
-    el("orderBox").style.borderColor = "var(--border-dark)";
-    el("orderBox").style.background = "var(--secondary)";
-    el("resetOrder").style.display = "none";
-    el("checkOrder").style.display = "none";
-    el("checkOrder").classList.remove("checkAttention");
-
+    el("orderBox").textContent = "Choose your answer below";
+    el("resetOrder").style.display = "none"; el("checkOrder").style.display = "none"; el("checkOrder").classList.remove("checkAttention");
     el("options").classList.add("mode-multiple");
-
-    const btnPS = document.createElement("button");
-    btnPS.className = "choiceCard choicePS";
-    btnPS.type = "button";
-    btnPS.setAttribute("data-testid", "choice-ps");
-    btnPS.innerHTML = `
-      <div class="choiceIcon">🔵</div>
-      <div class="choiceText">Present Simple
-        <small>habits • routines • facts</small>
-      </div>
-    `;
-    btnPS.onclick = () => submitMultiple("PS");
-
-    const btnPC = document.createElement("button");
-    btnPC.className = "choiceCard choicePC";
-    btnPC.type = "button";
-    btnPC.setAttribute("data-testid", "choice-pc");
-    btnPC.innerHTML = `
-      <div class="choiceIcon">🟢</div>
-      <div class="choiceText">Present Continuous
-        <small>now • temporary • in progress</small>
-      </div>
-    `;
-    btnPC.onclick = () => submitMultiple("PC");
-
-    el("options").appendChild(btnPS);
-    el("options").appendChild(btnPC);
-
-    el("downloadReport").style.display = state.running ? "inline-flex" : "none";
-    return;
+    const btnPS = document.createElement("button"); btnPS.className = "choiceCard choicePS"; btnPS.type = "button"; btnPS.setAttribute("data-testid", "choice-ps"); btnPS.innerHTML = `<div class="choiceIcon">🔵</div><div class="choiceText">Present Simple<small>habits • routines • facts</small></div>`; btnPS.onclick = () => submitMultiple("PS");
+    const btnPC = document.createElement("button"); btnPC.className = "choiceCard choicePC"; btnPC.type = "button"; btnPC.setAttribute("data-testid", "choice-pc"); btnPC.innerHTML = `<div class="choiceIcon">🟢</div><div class="choiceText">Present Continuous<small>now • temporary</small></div>`; btnPC.onclick = () => submitMultiple("PC");
+    el("options").appendChild(btnPS); el("options").appendChild(btnPC);
+    el("downloadReport").style.display = state.running ? "inline-flex" : "none"; return;
   }
-
-  // ORDERING MODE
-  setCard(meta.label, "Arrange the words to form a correct sentence:");
-
-  el("orderBox").textContent = "Tap words below to build your sentence...";
-  el("resetOrder").style.display = "inline-flex";
-  el("checkOrder").style.display = "inline-flex";
-  el("checkOrder").classList.add("checkAttention");
-
+  setCard(meta.label, "Arrange words to form correct sentence:");
+  el("orderBox").textContent = "Tap words to build sentence..."; el("resetOrder").style.display = "inline-flex"; el("checkOrder").style.display = "inline-flex"; el("checkOrder").classList.add("checkAttention");
   el("options").classList.add("mode-order");
-
-  state.round.orderWords.forEach((w, idx) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "orderWord";
-    b.textContent = w;
-    b.dataset.idx = String(idx);
-    b.setAttribute("data-testid", `order-word-${idx}`);
-    b.onclick = () => pickWord(idx, w, b);
-    el("options").appendChild(b);
-  });
-
-  el("downloadReport").style.display = state.running ? "inline-flex" : "none";
-  renderSelectedChips();
+  state.round.orderWords.forEach((w, idx) => { const b = document.createElement("button"); b.type = "button"; b.className = "orderWord"; b.textContent = w; b.dataset.idx = String(idx); b.setAttribute("data-testid", `order-word-${idx}`); b.onclick = () => pickWord(idx, w, b); el("options").appendChild(b); });
+  el("downloadReport").style.display = state.running ? "inline-flex" : "none"; renderSelectedChips();
 }
 
-/* ==========================================================
-   SUBMIT / CHECK
-========================================================== */
-function submitMultiple(choiceTense) {
-  if (!state.running) return;
-  const ok = (choiceTense === state.round.correctTense);
-  gradeRound(ok, {
-    student: choiceTense === "PS" ? "Present Simple" : "Present Continuous",
-    correct: state.round.correctTense === "PS" ? "Present Simple" : "Present Continuous"
-  });
-}
+function submitMultiple(choiceTense) { if (!state.running) return; const ok = (choiceTense === state.round.correctTense); gradeRound(ok, { student: choiceTense === "PS" ? "Present Simple" : "Present Continuous", correct: state.round.correctTense === "PS" ? "Present Simple" : "Present Continuous" }); }
+function checkOrder() { if (!state.running) return; const built = normalizeSentence(state.orderSelected.map(x => x.word).join(" ")); const correct = normalizeSentence(state.round.targetWords.join(" ")); gradeRound(built === correct, { built, correct }); }
 
-function checkOrder() {
-  if (!state.running) return;
-
-  const built = normalizeSentence(state.orderSelected.map(x => x.word).join(" "));
-  const correct = normalizeSentence(state.round.targetWords.join(" "));
-
-  gradeRound(built === correct, { built, correct });
-}
-
-/* ==========================================================
-   FEEDBACK
-========================================================== */
 function showFeedback(ok, detail, isWin) {
-  const overlay = el("feedbackOverlay");
-  overlay.classList.add("show");
-  overlay.setAttribute("aria-hidden", "false");
-
-  const fbIconEl = el("fbIcon");
-  fbIconEl.textContent = ok ? "✅" : "❌";
-  fbIconEl.className = ok ? "fbIcon success" : "fbIcon error";
-
+  const overlay = el("feedbackOverlay"); overlay.classList.add("show"); overlay.setAttribute("aria-hidden", "false");
+  const fbIconEl = el("fbIcon"); fbIconEl.textContent = ok ? "✅" : "❌"; fbIconEl.className = ok ? "fbIcon success" : "fbIcon error";
   el("fbTitle").textContent = ok ? (isWin ? "Perfect!" : "Correct!") : "Not quite...";
-  el("fbSub").textContent = ok
-    ? (isWin ? `Amazing! You reached ${TARGET_STREAK} correct in a row!` : `Great job! Streak: ${state.streak} / ${TARGET_STREAK}`)
-    : `Streak reset to 0. Keep practicing!`;
-
-  let d = "";
-  if (state.round.mode === "multiple") {
-    d = ok
-      ? `You chose: ${detail.student}`
-      : `You chose: ${detail.student}\nCorrect answer: ${detail.correct}`;
-  } else {
-    d = ok
-      ? `Perfect sentence ordering!`
-      : `Your answer: "${detail.built || "(empty)}"\nCorrect: "${detail.correct}"`;
-  }
+  el("fbSub").textContent = ok ? (isWin ? `Amazing! ${TARGET_STREAK} in a row!` : `Streak: ${state.streak} / ${TARGET_STREAK}`) : `Streak reset. Keep trying!`;
+  let d = ""; if (state.round.mode === "multiple") d = ok ? `You chose: ${detail.student}` : `You chose: ${detail.student}\nCorrect: ${detail.correct}`; else d = ok ? `Perfect ordering!` : `Your answer: "${detail.built || "(empty)"}"\nCorrect: "${detail.correct}"`;
   el("fbDetail").textContent = d;
 }
+function hideFeedback() { const overlay = el("feedbackOverlay"); overlay.classList.remove("show"); overlay.setAttribute("aria-hidden", "true"); }
+function afterFeedbackAutoNext(isWin) { if (isWin) return; setTimeout(() => { hideFeedback(); nextRound(); }, 700); }
 
-function hideFeedback() {
-  const overlay = el("feedbackOverlay");
-  overlay.classList.remove("show");
-  overlay.setAttribute("aria-hidden", "true");
-}
-
-function afterFeedbackAutoNext(isWin) {
-  if (isWin) return;
-  setTimeout(() => {
-    hideFeedback();
-    nextRound();
-  }, 700);
-}
-
-/* ==========================================================
-   GRADING
-========================================================== */
-function logAttempt(ok, detail) {
-  const meta = BANK_META.find(x => x.key === state.round.bankKey);
-  state.log.push({
-    time_s: state.seconds,
-    ok: ok ? 1 : 0,
-    streak_after: state.streak,
-    bank: state.round.bankKey,
-    bank_label: meta ? meta.label : state.round.bankKey,
-    mode: state.round.mode,
-    prompt: state.round.mode === "multiple" ? state.round.sentence : "(ordering round)",
-    detail: JSON.stringify(detail || {})
-  });
-}
+function logAttempt(ok, detail) { const meta = BANK_META.find(x => x.key === state.round.bankKey); state.log.push({ time_s: state.seconds, ok: ok ? 1 : 0, streak_after: state.streak, bank: state.round.bankKey, bank_label: meta ? meta.label : state.round.bankKey, mode: state.round.mode, prompt: state.round.mode === "multiple" ? state.round.sentence : "(ordering round)", detail: JSON.stringify(detail || {}) }); }
 
 function gradeRound(ok, detail) {
-  const st = state.stats[state.round.bankKey];
-  st.attempts++;
-
-  if (ok) {
-    st.correct++;
-    st.recentWrong = Math.max(0, st.recentWrong - 1);
-
-    state.score++;
-    state.streak++;
-    blip(true);
-
-    logAttempt(true, detail);
-    updateHeader();
-    updateProgress();
-
-    if (state.streak >= TARGET_STREAK) {
-      showFeedback(true, detail, true);
-      winGame();
-      return;
-    }
-
-    showFeedback(true, detail, false);
-    afterFeedbackAutoNext(false);
-    return;
-  }
-
-  st.wrong++;
-  st.recentWrong++;
-
-  state.remediation.bankKey = state.round.bankKey;
-  state.remediation.remaining = 2;
-
-  state.streak = 0;
-  blip(false);
-
-  logAttempt(false, detail);
-  updateHeader();
-  updateProgress();
-
-  showFeedback(false, detail, false);
-  afterFeedbackAutoNext(false);
+  const st = state.stats[state.round.bankKey]; st.attempts++;
+  if (ok) { st.correct++; st.recentWrong = Math.max(0, st.recentWrong - 1); state.score++; state.streak++; blip(true); logAttempt(true, detail); updateHeader(); updateProgress(); if (state.streak >= TARGET_STREAK) { showFeedback(true, detail, true); winGame(); return; } showFeedback(true, detail, false); afterFeedbackAutoNext(false); return; }
+  st.wrong++; st.recentWrong++; state.remediation.bankKey = state.round.bankKey; state.remediation.remaining = 2; state.streak = 0; blip(false); logAttempt(false, detail); updateHeader(); updateProgress(); showFeedback(false, detail, false); afterFeedbackAutoNext(false);
 }
 
-/* ==========================================================
-   GAME FLOW
-========================================================== */
-function lockRoundControls(lock) {
-  el("options").querySelectorAll("button").forEach(b => b.disabled = !!lock);
-  el("resetOrder").disabled = !!lock;
-  el("checkOrder").disabled = !!lock;
-}
-
-function nextRound() {
-  if (!state.running) return;
-
-  hideFeedback();
-
-  state.round = makeRound();
-  renderRound();
-  lockRoundControls(false);
-}
+function lockRoundControls(lock) { el("options").querySelectorAll("button").forEach(b => b.disabled = !!lock); el("resetOrder").disabled = !!lock; el("checkOrder").disabled = !!lock; }
+function nextRound() { if (!state.running) return; hideFeedback(); state.round = makeRound(); renderRound(); lockRoundControls(false); }
 
 function startGame() {
-  state.running = true;
-  state.streak = 0;
-  state.score = 0;
-  state.seconds = 0;
-  state.log = [];
-  state.remediation = { bankKey: null, remaining: 0 };
-  state.lastBankKey = null;
-
-  for (const k of Object.keys(state.stats)) {
-    state.stats[k] = { attempts: 0, correct: 0, wrong: 0, recentWrong: 0 };
-  }
-
+  state.running = true; state.streak = 0; state.score = 0; state.seconds = 0; state.log = []; state.remediation = { bankKey: null, remaining: 0 }; state.lastBankKey = null;
+  for (const k of Object.keys(state.stats)) state.stats[k] = { attempts: 0, correct: 0, wrong: 0, recentWrong: 0 };
   state.recentByBank = Object.fromEntries(BANK_META.map(b => [b.key, []]));
-
   el("playerName").textContent = (el("studentName").value || "—").trim() || "—";
-
-  updateHeader();
-  updateProgress();
-  updateBankStats();
-
-  if (state.timer) clearInterval(state.timer);
-  state.timer = setInterval(() => {
-    if (!state.running) return;
-    state.seconds++;
-    updateHeader();
-  }, 1000);
-
-  el("downloadReport").style.display = "inline-flex";
-  nextRound();
+  updateHeader(); updateProgress(); updateBankStats();
+  if (state.timer) clearInterval(state.timer); state.timer = setInterval(() => { if (!state.running) return; state.seconds++; updateHeader(); }, 1000);
+  el("downloadReport").style.display = "inline-flex"; nextRound();
 }
 
 function resetGame() {
-  state.running = false;
-
-  if (state.timer) clearInterval(state.timer);
-  state.timer = null;
-
-  hideFeedback();
-  closeCelebration();
-
-  state.streak = 0;
-  state.score = 0;
-  state.seconds = 0;
-  state.round = null;
-  state.orderSelected = [];
-
-  updateHeader();
-  updateProgress();
-
-  setCard("Ready", "Press START to begin your practice!");
-  el("orderBox").textContent = "Your sentence will appear here...";
-  el("orderBox").style.borderStyle = "dashed";
-  el("orderBox").style.borderColor = "var(--border-dark)";
-  el("orderBox").style.background = "var(--secondary)";
-  clearOptions();
-
-  el("resetOrder").style.display = "none";
-  el("checkOrder").style.display = "none";
-  el("checkOrder").classList.remove("checkAttention");
-  el("downloadReport").style.display = "none";
+  state.running = false; if (state.timer) clearInterval(state.timer); state.timer = null; hideFeedback(); closeCelebration();
+  state.streak = 0; state.score = 0; state.seconds = 0; state.round = null; state.orderSelected = [];
+  updateHeader(); updateProgress(); setCard("Ready", "Press START to begin!");
+  el("orderBox").textContent = "Your sentence appears here..."; clearOptions();
+  el("resetOrder").style.display = "none"; el("checkOrder").style.display = "none"; el("checkOrder").classList.remove("checkAttention"); el("downloadReport").style.display = "none";
 }
 
-function winGame() {
-  state.running = false;
+function winGame() { state.running = false; if (state.timer) clearInterval(state.timer); state.timer = null; lockRoundControls(true); const c = el("celebration"); c.style.display = "flex"; c.setAttribute("aria-hidden", "false"); el("celebrationSub").textContent = `Incredible! ${TARGET_STREAK} correct in a row!`; state.streak = TARGET_STREAK; updateHeader(); updateProgress(); }
+function closeCelebration() { const c = el("celebration"); c.style.display = "none"; c.setAttribute("aria-hidden", "true"); }
 
-  if (state.timer) clearInterval(state.timer);
-  state.timer = null;
+function downloadCSV() { const rows = [["time_s", "ok", "streak_after", "bank", "bank_label", "mode", "prompt", "detail"], ...state.log.map(r => [r.time_s, r.ok, r.streak_after, r.bank, r.bank_label, r.mode, r.prompt.replaceAll('"', '""'), r.detail.replaceAll('"', '""')])]; const csv = rows.map(r => r.map(x => `"${String(x)}"`).join(",")).join("\n"); const blob = new Blob([csv], { type: "text/csv;charset=utf-8" }); const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = `present_tense_report_${Date.now()}.csv`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); }
 
-  lockRoundControls(true);
-
-  const c = el("celebration");
-  c.style.display = "flex";
-  c.setAttribute("aria-hidden", "false");
-  el("celebrationSub").textContent = `Incredible! You got ${TARGET_STREAK} correct answers in a row!`;
-
-  state.streak = TARGET_STREAK;
-  updateHeader();
-  updateProgress();
-}
-
-function closeCelebration() {
-  const c = el("celebration");
-  c.style.display = "none";
-  c.setAttribute("aria-hidden", "true");
-}
-
-/* ==========================================================
-   CSV DOWNLOAD
-========================================================== */
-function downloadCSV() {
-  const rows = [
-    ["time_s", "ok", "streak_after", "bank", "bank_label", "mode", "prompt", "detail"],
-    ...state.log.map(r => [
-      r.time_s, r.ok, r.streak_after, r.bank, r.bank_label, r.mode,
-      r.prompt.replaceAll('"', '""'),
-      r.detail.replaceAll('"', '""')
-    ])
-  ];
-
-  const csv = rows.map(r => r.map(x => `"${String(x)}"`).join(",")).join("\n");
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `present_tense_report_${Date.now()}.csv`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-
-  URL.revokeObjectURL(url);
-}
-
-/* ==========================================================
-   EVENT LISTENERS
-========================================================== */
-el("startBtn").addEventListener("click", () => {
-  if (state.running) return;
-  startGame();
-});
-
+el("startBtn").addEventListener("click", () => { if (state.running) return; startGame(); });
 el("resetBtn").addEventListener("click", resetGame);
 el("resetOrder").addEventListener("click", resetOrder);
 el("checkOrder").addEventListener("click", checkOrder);
 el("fbCloseBtn").addEventListener("click", hideFeedback);
 el("downloadReport").addEventListener("click", downloadCSV);
 el("celebrationDownload").addEventListener("click", downloadCSV);
+el("celebrationRestart").addEventListener("click", () => { closeCelebration(); resetGame(); startGame(); });
+el("studentName").addEventListener("input", () => { el("playerName").textContent = (el("studentName").value || "—").trim() || "—"; });
 
-el("celebrationRestart").addEventListener("click", () => {
-  closeCelebration();
-  resetGame();
-  startGame();
-});
-
-el("studentName").addEventListener("input", () => {
-  el("playerName").textContent = (el("studentName").value || "—").trim() || "—";
-});
-
-/* Initial UI */
-updateHeader();
-updateProgress();
-updateBankStats();
+updateHeader(); updateProgress(); updateBankStats();
 </script>
 </body>
 </html>
