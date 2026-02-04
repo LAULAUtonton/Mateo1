@@ -254,7 +254,7 @@
 
     /* WORD BANK */
     .words {
-      background: var(--bg);
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 12px;
       padding: 12px;
       display: flex;
@@ -267,8 +267,8 @@
     }
 
     .word-btn {
-      background: var(--text);
-      color: var(--bg);
+      background: linear-gradient(135deg, #ffffff, #f0f0f0);
+      color: #667eea;
       border: none;
       padding: 10px 16px;
       border-radius: 8px;
@@ -276,11 +276,18 @@
       font-weight: 900;
       font-size: 0.9rem;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s;
+    }
+
+    .word-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     }
 
     .word-btn:disabled {
-      background: var(--yellow);
-      color: #000;
+      background: linear-gradient(135deg, #ffd93d, #ffed4e);
+      color: #333;
     }
 
     /* CHOICES */
