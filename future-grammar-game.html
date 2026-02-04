@@ -133,9 +133,11 @@
 
     /* PROGRESS */
     .progress-box {
-      background: var(--surface);
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
       padding: 10px 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .progress-top {
@@ -146,11 +148,11 @@
       margin-bottom: 6px;
     }
 
-    .progress-top span:last-child { color: var(--orange); }
+    .progress-top span:last-child { color: var(--yellow); }
 
     .progress-bar {
       height: 10px;
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.3);
       border-radius: 99px;
       overflow: hidden;
     }
@@ -158,9 +160,10 @@
     .progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--orange), var(--yellow));
+      background: linear-gradient(90deg, #ff6b6b, #ffd93d, #4ecdc4);
       border-radius: 99px;
       transition: width 0.3s;
+      box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
     }
 
     /* GAME */
