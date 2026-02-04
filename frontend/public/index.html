@@ -1,180 +1,1361 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="A product of emergent.sh" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
-        <!--
-        manifest.json provides metadata used when your web app is installed on a
-        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-        -->
-        <!--
-        Notice the use of %PUBLIC_URL% in the tags above.
-        It will be replaced with the URL of the `public` folder during the build.
-        Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <title>Future Grammar Mastery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 
-        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-        work correctly both with client-side routing and a non-root public URL.
-        Learn how to configure a non-root public URL by running `npm run build`.
-        -->
-        <title>Emergent | Fullstack App</title>
-        <script src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
-        <!--
-        These two scripts have been added for the Visual Edits, please do not edit or remove them
-        -->
-        <script>
-            // Only load visual edit scripts when inside an iframe
-            if (window.self !== window.top) {
-                // Load debug monitor script
-                var debugMonitorScript = document.createElement('script');
-                debugMonitorScript.src = 'https://assets.emergent.sh/scripts/debug-monitor.js';
-                document.head.appendChild(debugMonitorScript);
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --card: #334155;
+      --card-hover: #475569;
+      --text: #f8fafc;
+      --text-dim: #94a3b8;
+      --primary: #f97316;
+      --primary-glow: rgba(249, 115, 22, 0.4);
+      --secondary: #06b6d4;
+      --success: #22c55e;
+      --success-glow: rgba(34, 197, 94, 0.4);
+      --error: #ef4444;
+      --error-glow: rgba(239, 68, 68, 0.4);
+      --yellow: #fbbf24;
+      --purple: #a78bfa;
+      --pink: #f472b6;
+      --lime: #a3e635;
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-xs: 8px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --transition: all 0.2s ease;
+    }
 
-                // Configure Tailwind
-                window.tailwind = window.tailwind || {};
-                tailwind.config = {
-                    corePlugins: { preflight: false },
-                };
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow-x: hidden; }
+    
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
 
-                // Load Tailwind CDN
-                var tailwindScript = document.createElement('script');
-                tailwindScript.src = 'https://cdn.tailwindcss.com';
-                document.head.appendChild(tailwindScript);
-            }
-        </script>
-    </head>
-    <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
-        <div id="root"></div>
-        <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    /* LAYOUT */
+    .app {
+      min-height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 12px 16px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-        <a
-            id="emergent-badge"
-            target="_blank"
-            href="https://app.emergent.sh/?utm_source=emergent-badge"
-            style="
-                display: inline-flex !important;
-                box-sizing: border-box;
-                width: 178px;
-                height: 40px;
-                padding: 8px 12px 8px 12px;
-                align-items: center !important;
-                gap: 8px;
-                border-radius: 50px !important;
-                background: #000 !important;
-                position: fixed !important;
-                bottom: 16px;
-                right: 16px;
-                text-decoration: none;
-                font-family: -apple-system, BlinkMacSystemFont,
-                    &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell,
-                    &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;,
-                    sans-serif !important;
-                font-size: 12px !important;
-                z-index: 9999 !important;
-            "
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M15.5702 8.13142C15.7729 8.0412 16.0007 8.18878 15.9892 8.4103C15.8374 11.3192 14.0965 14.0405 11.2531 15.3065C8.40964 16.5725 5.2224 16.0453 2.95912 14.2117C2.78676 14.072 2.82955 13.804 3.03219 13.7137L4.95677 12.8568C5.04866 12.8159 5.15446 12.823 5.24204 12.8725C6.73377 13.7153 8.59176 13.8649 10.2772 13.1145C11.9626 12.3641 13.0947 10.8833 13.4665 9.21075C13.4883 9.11256 13.5539 9.02918 13.6457 8.98827L15.5702 8.13142Z" fill="white"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.3066 4.74698L15.5067 5.19653C15.5759 5.35178 15.5061 5.53366 15.3508 5.60278L1.29992 11.8586C1.14467 11.9278 0.962794 11.8579 0.893675 11.7027L0.701732 11.2716L0.693457 11.2531C-1.10317 7.21778 0.711626 2.49007 4.74692 0.693443C8.78221 -1.10318 13.51 0.711693 15.3066 4.74698ZM2.82356 8.55367C2.63552 8.63739 2.41991 8.51617 2.40853 8.31065C2.28373 6.05724 3.53858 3.85787 5.72286 2.88536C7.90715 1.91286 10.3813 2.45199 11.9724 4.05256C12.1175 4.19854 12.0633 4.43988 11.8753 4.5236L2.82356 8.55367Z" fill="white"/>
-            </svg>
-            <p
-                style="
-                    color: #FFF !important;
-                    font-family: 'Inter', sans-serif !important;
-                    font-size: 13px !important;
-                    font-style: normal !important;
-                    font-weight: 600 !important;
-                    line-height: 20px !important;
-                    margin: 0 !important;
-                    white-space: nowrap !important;
-                "
-            >
-                Made with Emergent
-            </p>
-        </a>
-        <script>
-            !(function (t, e) {
-                var o, n, p, r;
-                e.__SV ||
-                    ((window.posthog = e),
-                    (e._i = []),
-                    (e.init = function (i, s, a) {
-                        function g(t, e) {
-                            var o = e.split(".");
-                            2 == o.length && ((t = t[o[0]]), (e = o[1])),
-                                (t[e] = function () {
-                                    t.push(
-                                        [e].concat(
-                                            Array.prototype.slice.call(
-                                                arguments,
-                                                0,
-                                            ),
-                                        ),
-                                    );
-                                });
-                        }
-                        ((p = t.createElement("script")).type =
-                            "text/javascript"),
-                            (p.crossOrigin = "anonymous"),
-                            (p.async = !0),
-                            (p.src =
-                                s.api_host.replace(
-                                    ".i.posthog.com",
-                                    "-assets.i.posthog.com",
-                                ) + "/static/array.js"),
-                            (r =
-                                t.getElementsByTagName(
-                                    "script",
-                                )[0]).parentNode.insertBefore(p, r);
-                        var u = e;
-                        for (
-                            void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
-                                u.people = u.people || [],
-                                u.toString = function (t) {
-                                    var e = "posthog";
-                                    return (
-                                        "posthog" !== a && (e += "." + a),
-                                        t || (e += " (stub)"),
-                                        e
-                                    );
-                                },
-                                u.people.toString = function () {
-                                    return u.toString(1) + ".people (stub)";
-                                },
-                                o =
-                                    "init me ws ys ps bs capture je Di ks register register_once register_for_session unregister unregister_for_session Ps getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Es $s createPersonProfile Is opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ss debug xs getPageViewId captureTraceFeedback captureTraceMetric".split(
-                                        " ",
-                                    ),
-                                n = 0;
-                            n < o.length;
-                            n++
-                        )
-                            g(u, o[n]);
-                        e._i.push([i, s, a]);
-                    }),
-                    (e.__SV = 1));
-            })(document, window.posthog || []);
-            posthog.init("phc_xAvL2Iq4tFmANRE7kzbKwaSqp1HJjN7x48s3vr0CMjs", {
-                api_host: "https://us.i.posthog.com",
-                person_profiles: "identified_only", // or 'always' to create profiles for anonymous users as well,
-                session_recording: {
-                    recordCrossOriginIframes: true,
-                    capturePerformance: false,
-                },
-            });
-        </script>
-    </body>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--primary), var(--yellow));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 0 20px var(--primary-glow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 20px var(--primary-glow); }
+      50% { box-shadow: 0 0 30px var(--primary-glow), 0 0 40px var(--primary-glow); }
+    }
+
+    .title { font-size: 1.3rem; font-weight: 900; }
+    .subtitle { font-size: 0.8rem; color: var(--text-dim); font-weight: 700; }
+    .subtitle b { color: var(--primary); }
+
+    .name-input {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 2px solid transparent;
+      transition: var(--transition);
+    }
+
+    .name-input:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .name-input label {
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .name-input input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      width: 120px;
+    }
+
+    .name-input input::placeholder { color: var(--text-dim); }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .stat {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: var(--transition);
+    }
+
+    .stat:hover { transform: translateY(-2px); }
+
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-top: 4px;
+    }
+
+    .stat-value.streak { color: var(--primary); }
+    .stat-value.mistakes { color: var(--error); }
+    .stat-value.time { color: var(--secondary); }
+
+    /* PROGRESS */
+    .progress-wrap {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .progress-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-dim);
+    }
+
+    .progress-count {
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .progress-bar {
+      height: 12px;
+      background: var(--card);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--yellow), var(--primary));
+      background-size: 200% 100%;
+      border-radius: 999px;
+      transition: width 0.4s ease;
+      animation: shimmer 2s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .progress-fill.active {
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    /* GAME AREA */
+    .game-area {
+      flex: 1;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 300px;
+    }
+
+    /* QUESTION TYPE BADGE */
+    .q-type {
+      display: flex;
+      justify-content: center;
+    }
+
+    .q-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--primary);
+      color: #000;
+      font-weight: 900;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    /* SENTENCE DISPLAY */
+    .sentence-box {
+      background: var(--bg);
+      border: 3px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    .sentence-text {
+      font-size: 1.3rem;
+      font-weight: 900;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    /* BUILT AREA (for ordering) */
+    .built-area {
+      background: linear-gradient(135deg, var(--card), var(--surface));
+      border: 3px dashed var(--secondary);
+      border-radius: var(--radius);
+      padding: 16px;
+      min-height: 70px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .built-area.has-words {
+      border-style: solid;
+      border-color: var(--success);
+      box-shadow: 0 0 15px var(--success-glow);
+    }
+
+    .built-area.empty-msg {
+      color: var(--text-dim);
+      font-weight: 700;
+    }
+
+    .word-chip {
+      background: var(--secondary);
+      color: #000;
+      padding: 10px 16px;
+      border-radius: var(--radius-xs);
+      font-weight: 900;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      animation: chipIn 0.2s ease;
+    }
+
+    @keyframes chipIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .word-chip:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+    }
+
+    /* WORD BANK */
+    .word-bank {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-content: flex-start;
+      flex: 1;
+      min-height: 100px;
+    }
+
+    .word-btn {
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      padding: 12px 18px;
+      border-radius: var(--radius-xs);
+      font-family: inherit;
+      font-weight: 900;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .word-btn:hover:not(:disabled) {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+    }
+
+    .word-btn:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+
+    .word-btn:disabled {
+      background: var(--yellow);
+      color: #000;
+      cursor: default;
+      opacity: 0.9;
+    }
+
+    /* CHOICE CARDS */
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      flex: 1;
+    }
+
+    .choice-btn {
+      border: none;
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .choice-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .choice-btn:hover::before {
+      left: 100%;
+    }
+
+    .choice-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+
+    .choice-btn:active {
+      transform: scale(0.98);
+    }
+
+    .choice-title {
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .choice-desc {
+      font-size: 0.8rem;
+      font-weight: 700;
+      opacity: 0.85;
+    }
+
+    .c-cyan { background: linear-gradient(135deg, var(--secondary), #0891b2); color: #000; }
+    .c-yellow { background: linear-gradient(135deg, var(--yellow), #f59e0b); color: #000; }
+    .c-success { background: linear-gradient(135deg, var(--success), #16a34a); color: #fff; }
+    .c-pink { background: linear-gradient(135deg, var(--pink), #db2777); color: #fff; }
+    .c-purple { background: linear-gradient(135deg, var(--purple), #7c3aed); color: #fff; }
+    .c-lime { background: linear-gradient(135deg, var(--lime), #65a30d); color: #000; }
+
+    /* FEEDBACK */
+    .feedback {
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .feedback.correct {
+      color: var(--success);
+      animation: feedbackPop 0.3s ease;
+    }
+
+    .feedback.wrong {
+      color: var(--error);
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes feedbackPop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* ACTION BUTTONS */
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 12px 24px;
+      font-family: inherit;
+      font-weight: 900;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #ea580c);
+      color: #fff;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 8px 25px var(--primary-glow);
+    }
+
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 2px solid var(--card-hover);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, var(--success), #16a34a);
+      color: #fff;
+      box-shadow: 0 4px 15px var(--success-glow);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, var(--error), #dc2626);
+      color: #fff;
+    }
+
+    .btn-check {
+      background: linear-gradient(135deg, var(--yellow), #f59e0b);
+      color: #000;
+      font-size: 1.1rem;
+      padding: 14px 32px;
+      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+    }
+
+    /* CONTROLS */
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+    }
+
+    .ctrl-btn {
+      background: var(--surface);
+      border: 2px solid var(--card);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .ctrl-btn:hover {
+      border-color: var(--primary);
+      background: var(--card);
+    }
+
+    .ctrl-btn.active {
+      border-color: var(--success);
+      background: var(--success);
+      color: #000;
+    }
+
+    /* OVERLAYS */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .overlay.show { display: flex; }
+
+    .overlay-card {
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 40px var(--primary-glow);
+      animation: overlayIn 0.3s ease;
+    }
+
+    @keyframes overlayIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .overlay-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      animation: bounce 0.6s ease infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    .overlay-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .overlay-text {
+      color: var(--text-dim);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* SUMMARY */
+    .summary {
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-weight: 700;
+    }
+
+    .summary-row:last-child { border-bottom: none; }
+
+    .summary-val {
+      color: var(--secondary);
+      font-weight: 900;
+    }
+
+    .summary-val.bad { color: var(--error); }
+
+    /* MILESTONE */
+    .milestone {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: var(--primary);
+      color: #000;
+      padding: 20px 40px;
+      border-radius: var(--radius);
+      font-size: 1.5rem;
+      font-weight: 900;
+      z-index: 999;
+      box-shadow: 0 0 50px var(--primary-glow);
+      pointer-events: none;
+    }
+
+    .milestone.show {
+      animation: milestoneAnim 1.5s ease forwards;
+    }
+
+    @keyframes milestoneAnim {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      20% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+      80% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .app { padding: 8px; }
+      .header { flex-direction: column; align-items: stretch; padding: 10px; }
+      .brand { justify-content: center; }
+      .name-input { justify-content: center; }
+      .name-input input { width: 100%; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .choices { grid-template-columns: 1fr; }
+      .sentence-text { font-size: 1.1rem; }
+      .title { font-size: 1.1rem; }
+      .controls { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+
+<body>
+  <!-- Milestone popup -->
+  <div class="milestone" id="milestone"></div>
+
+  <!-- Win overlay -->
+  <div class="overlay" id="winOverlay">
+    <div class="overlay-card">
+      <div class="overlay-icon">🏆</div>
+      <div class="overlay-title">Mastery Complete!</div>
+      <div class="overlay-text">Amazing! You got 25 correct in a row!</div>
+      <div class="summary" id="summary"></div>
+      <div class="actions">
+        <button class="btn btn-primary" id="playAgainBtn">🔄 Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause overlay -->
+  <div class="overlay" id="pauseOverlay">
+    <div class="overlay-card">
+      <div class="overlay-icon">⏸️</div>
+      <div class="overlay-title">Paused</div>
+      <div class="overlay-text">Take a break! Resume when ready.</div>
+      <div class="actions">
+        <button class="btn btn-success" id="resumeBtn">▶️ Resume</button>
+        <button class="btn btn-danger" id="exitBtn">⏹️ Exit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="app">
+    <!-- Header -->
+    <div class="header">
+      <div class="brand">
+        <div class="logo">🎯</div>
+        <div>
+          <div class="title">Future Grammar Mastery</div>
+          <div class="subtitle">Get <b>25 correct</b> in a row to win!</div>
+        </div>
+      </div>
+      <div class="name-input">
+        <label>Name:</label>
+        <input type="text" id="playerName" placeholder="Your name" data-testid="player-name">
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Player</div>
+        <div class="stat-value" id="displayName">---</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Streak</div>
+        <div class="stat-value streak" id="streakDisplay">0/25</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Mistakes</div>
+        <div class="stat-value mistakes" id="mistakesDisplay">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Time</div>
+        <div class="stat-value time" id="timerDisplay">00:00</div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <div class="progress-title">Progress to Mastery</div>
+        <div class="progress-count" id="progressCount">0%</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Game Area -->
+    <div class="game-area">
+      <div class="q-type">
+        <div class="q-badge" id="qBadge">🎮 Ready to Start</div>
+      </div>
+
+      <!-- Sentence display -->
+      <div class="sentence-box hidden" id="sentenceBox">
+        <div class="sentence-text" id="sentenceText"></div>
+      </div>
+
+      <!-- Built area for ordering -->
+      <div class="built-area hidden" id="builtArea"></div>
+
+      <!-- Word bank -->
+      <div class="word-bank hidden" id="wordBank"></div>
+
+      <!-- Choice cards -->
+      <div class="choices hidden" id="choices"></div>
+
+      <!-- Feedback -->
+      <div class="feedback" id="feedback"></div>
+
+      <!-- Order actions -->
+      <div class="actions hidden" id="orderActions">
+        <button class="btn btn-secondary" id="clearBtn">🗑️ Clear</button>
+        <button class="btn btn-check" id="checkBtn" data-testid="check-btn">✓ Check Answer</button>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="ctrl-btn" id="startBtn" data-testid="start-btn">▶️ Start</button>
+      <button class="ctrl-btn" id="resetBtn">↺ Reset</button>
+      <button class="ctrl-btn" id="easyBtn">😊 Easy</button>
+      <button class="ctrl-btn" id="hardBtn">🔥 Hard</button>
+      <button class="ctrl-btn" id="pauseBtn">⏸️ Pause</button>
+      <button class="ctrl-btn" id="musicBtn">🔇 Music</button>
+    </div>
+  </div>
+
+  <audio id="bgm" loop preload="auto"><source src="audio/koala2.mp3" type="audio/mpeg"></audio>
+
+<script>
+/* =========================================================
+   GOOGLE SHEETS
+========================================================= */
+const SHEET_ENDPOINT = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+const SECRET_KEY = "GRAMMAR_GAME_2024";
+
+async function sendToGoogleSheets(data) {
+  if (!SHEET_ENDPOINT || SHEET_ENDPOINT.includes("YOUR_GOOGLE")) {
+    console.log("Sheets not configured:", data);
+    return;
+  }
+  try {
+    await fetch(SHEET_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ secret: SECRET_KEY, ...data })
+    });
+  } catch (e) { console.error(e); }
+}
+
+/* =========================================================
+   QUESTION BANK
+========================================================= */
+const BANK = [
+  { text: "The train leaves at 8:10 tomorrow.", form: "present_simple", intent: "schedule" },
+  { text: "School starts at 9 o'clock on Monday.", form: "present_simple", intent: "schedule" },
+  { text: "The concert begins at 7 p.m. on Friday.", form: "present_simple", intent: "schedule" },
+  { text: "The museum closes at 6 p.m.", form: "present_simple", intent: "schedule" },
+  { text: "Does the match start at noon?", form: "present_simple", intent: "schedule" },
+  { text: "I'm meeting my friends at 6 p.m.", form: "present_continuous", intent: "arrangement" },
+  { text: "We're having dinner together tomorrow.", form: "present_continuous", intent: "arrangement" },
+  { text: "She's seeing the dentist on Friday.", form: "present_continuous", intent: "arrangement" },
+  { text: "They're coming over for lunch tomorrow.", form: "present_continuous", intent: "arrangement" },
+  { text: "Are you visiting your grandma this weekend?", form: "present_continuous", intent: "arrangement" },
+  { text: "I think it will rain later.", form: "will", intent: "prediction" },
+  { text: "They will probably win the match.", form: "will", intent: "prediction" },
+  { text: "Maybe we will have a test tomorrow.", form: "will", intent: "prediction" },
+  { text: "Don't worry, I'll help you.", form: "will", intent: "offer_promise" },
+  { text: "I won't tell anyone. I promise.", form: "will", intent: "offer_promise" },
+  { text: "Okay, I'll do it now.", form: "will", intent: "decision_now" },
+  { text: "Wait—I'll message her right now.", form: "will", intent: "decision_now" },
+  { text: "The show will start in five minutes.", form: "will", intent: "announcement" },
+  { text: "I'm going to study tonight.", form: "going_to", intent: "plan" },
+  { text: "We're going to meet after school.", form: "going_to", intent: "plan" },
+  { text: "Are you going to watch the new episode?", form: "going_to", intent: "plan" },
+  { text: "Look at those clouds! It's going to rain.", form: "going_to", intent: "evidence_prediction" },
+  { text: "That glass is going to fall!", form: "going_to", intent: "evidence_prediction" },
+  { text: "If you don't study, you'll fail the test.", form: "first_conditional", intent: "warning" },
+  { text: "If you feel tired, take a break.", form: "first_conditional", intent: "advice" },
+  { text: "If it rains, we'll stay at home.", form: "first_conditional", intent: "plan" },
+  { text: "If she studies, she'll do well.", form: "first_conditional", intent: "prediction" }
+];
+
+const TENSE_OPTIONS = [
+  { key: "present_simple", label: "Present Simple", desc: "Schedules & timetables" },
+  { key: "present_continuous", label: "Present Continuous", desc: "Arrangements" },
+  { key: "will", label: "Will (Future)", desc: "Predictions & promises" },
+  { key: "going_to", label: "Going to", desc: "Plans & evidence" },
+  { key: "first_conditional", label: "First Conditional", desc: "If + present → will" }
+];
+
+const MEANING_MAP = {
+  will: [
+    { key: "prediction", label: "Prediction", desc: "I think / probably" },
+    { key: "offer_promise", label: "Offer / Promise", desc: "I'll help / I promise" },
+    { key: "decision_now", label: "Instant decision", desc: "Decided right now" },
+    { key: "announcement", label: "Announcement", desc: "Official information" }
+  ],
+  going_to: [
+    { key: "plan", label: "Plan / Intention", desc: "Already decided" },
+    { key: "evidence_prediction", label: "Evidence prediction", desc: "Look! I can see..." }
+  ],
+  present_simple: [{ key: "schedule", label: "Schedule", desc: "Timetable / fixed time" }],
+  present_continuous: [{ key: "arrangement", label: "Arrangement", desc: "Fixed with someone" }],
+  first_conditional: [
+    { key: "warning", label: "Warning", desc: "Bad consequence" },
+    { key: "advice", label: "Advice", desc: "Suggestion" },
+    { key: "plan", label: "Conditional plan", desc: "If X, we do Y" },
+    { key: "prediction", label: "Prediction", desc: "If X, Y happens" }
+  ]
+};
+
+/* =========================================================
+   STATE
+========================================================= */
+const GOAL = 25;
+let level = "easy";
+let running = false;
+let paused = false;
+let streak = 0;
+let mistakes = 0;
+let mistakesByType = { ORDER: 0, TENSE: 0, MEANING: 0 };
+let startTime = null;
+let timerInterval = null;
+let musicOn = false;
+let currentType = "";
+let currentQ = null;
+let built = [];
+let wordBtns = [];
+
+const $ = id => document.getElementById(id);
+const bgm = $("bgm");
+
+/* =========================================================
+   HELPERS
+========================================================= */
+const shuffle = arr => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
+const formatTime = ms => {
+  const s = Math.floor(ms / 1000);
+  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+};
+
+const nowMs = () => startTime ? Date.now() - startTime : 0;
+
+/* =========================================================
+   UI UPDATES
+========================================================= */
+function updateUI() {
+  $("streakDisplay").textContent = `${streak}/${GOAL}`;
+  $("mistakesDisplay").textContent = mistakes;
+  const pct = Math.round((streak / GOAL) * 100);
+  $("progressFill").style.width = `${pct}%`;
+  $("progressCount").textContent = `${pct}%`;
+  
+  if (running && streak > 0) {
+    $("progressFill").classList.add("active");
+  } else {
+    $("progressFill").classList.remove("active");
+  }
+}
+
+function updateTimer() {
+  $("timerDisplay").textContent = formatTime(nowMs());
+}
+
+function setFeedback(text, type = null) {
+  const fb = $("feedback");
+  fb.textContent = text;
+  fb.className = "feedback";
+  if (type === "correct") fb.classList.add("correct");
+  if (type === "wrong") fb.classList.add("wrong");
+}
+
+function setBadge(icon, text) {
+  $("qBadge").innerHTML = `${icon} ${text}`;
+}
+
+function show(el) { el.classList.remove("hidden"); }
+function hide(el) { el.classList.add("hidden"); }
+
+function resetView() {
+  setFeedback("");
+  hide($("sentenceBox"));
+  hide($("builtArea"));
+  hide($("wordBank"));
+  hide($("choices"));
+  hide($("orderActions"));
+  $("choices").innerHTML = "";
+  $("wordBank").innerHTML = "";
+  $("builtArea").innerHTML = "";
+  built = [];
+  wordBtns = [];
+}
+
+function showMilestone(text) {
+  const m = $("milestone");
+  m.textContent = text;
+  m.classList.add("show");
+  setTimeout(() => m.classList.remove("show"), 1500);
+}
+
+/* =========================================================
+   GAME FLOW
+========================================================= */
+function startGame() {
+  const name = $("playerName").value.trim();
+  if (!name) {
+    setFeedback("⚠️ Please enter your name!", "wrong");
+    $("playerName").focus();
+    return;
+  }
+  
+  $("displayName").textContent = name;
+  running = true;
+  paused = false;
+  streak = 0;
+  mistakes = 0;
+  mistakesByType = { ORDER: 0, TENSE: 0, MEANING: 0 };
+  
+  updateUI();
+  resetView();
+  
+  startTime = Date.now();
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(updateTimer, 500);
+  
+  if (musicOn) {
+    bgm.currentTime = 0;
+    bgm.play().catch(() => {});
+  }
+  
+  $("startBtn").classList.add("active");
+  nextQuestion();
+}
+
+function resetGame() {
+  running = false;
+  paused = false;
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = null;
+  startTime = null;
+  
+  streak = 0;
+  mistakes = 0;
+  mistakesByType = { ORDER: 0, TENSE: 0, MEANING: 0 };
+  
+  $("timerDisplay").textContent = "00:00";
+  $("displayName").textContent = "---";
+  updateUI();
+  resetView();
+  setBadge("🎮", "Ready to Start");
+  
+  bgm.pause();
+  musicOn = false;
+  $("musicBtn").textContent = "🔇 Music";
+  $("musicBtn").classList.remove("active");
+  $("startBtn").classList.remove("active");
+  
+  $("winOverlay").classList.remove("show");
+  $("pauseOverlay").classList.remove("show");
+}
+
+function nextQuestion() {
+  if (!running || paused) return;
+  resetView();
+  
+  const types = level === "hard" ? ["ORDER", "TENSE", "MEANING"] : ["ORDER", "TENSE"];
+  currentType = types[Math.floor(Math.random() * types.length)];
+  currentQ = BANK[Math.floor(Math.random() * BANK.length)];
+  
+  if (currentType === "ORDER") {
+    setBadge("📝", "Order the Words");
+    renderOrder();
+  } else if (currentType === "TENSE") {
+    setBadge("🎯", "Choose the Tense");
+    renderTense();
+  } else {
+    setBadge("💡", "What's the Meaning?");
+    renderMeaning();
+  }
+}
+
+/* =========================================================
+   ORDER MODE
+========================================================= */
+function renderOrder() {
+  show($("builtArea"));
+  show($("wordBank"));
+  show($("orderActions"));
+  
+  const tokens = shuffle(currentQ.text.split(" ").filter(Boolean));
+  const bank = $("wordBank");
+  bank.innerHTML = "";
+  
+  wordBtns = tokens.map(word => {
+    const btn = document.createElement("button");
+    btn.className = "word-btn";
+    btn.textContent = word;
+    btn.onclick = () => {
+      if (!running || paused) return;
+      built.push(word);
+      btn.disabled = true;
+      renderBuilt();
+    };
+    bank.appendChild(btn);
+    return { word, btn };
+  });
+  
+  renderBuilt();
+}
+
+function renderBuilt() {
+  const area = $("builtArea");
+  area.innerHTML = "";
+  
+  if (built.length === 0) {
+    area.classList.remove("has-words");
+    area.classList.add("empty-msg");
+    area.textContent = "👆 Tap words to build your sentence...";
+    return;
+  }
+  
+  area.classList.add("has-words");
+  area.classList.remove("empty-msg");
+  
+  built.forEach((word, i) => {
+    const chip = document.createElement("div");
+    chip.className = "word-chip";
+    chip.textContent = word;
+    chip.onclick = () => {
+      if (!running || paused) return;
+      built.splice(i, 1);
+      const match = wordBtns.find(x => x.word === word && x.btn.disabled);
+      if (match) match.btn.disabled = false;
+      renderBuilt();
+    };
+    area.appendChild(chip);
+  });
+}
+
+function clearOrder() {
+  built = [];
+  wordBtns.forEach(x => x.btn.disabled = false);
+  renderBuilt();
+}
+
+function checkOrder() {
+  if (!running || paused || !currentQ) return;
+  const attempt = built.join(" ");
+  grade(attempt === currentQ.text, { type: "ORDER", attempt, correct: currentQ.text });
+}
+
+/* =========================================================
+   TENSE MODE
+========================================================= */
+function renderTense() {
+  show($("sentenceBox"));
+  show($("choices"));
+  $("sentenceText").textContent = currentQ.text;
+  
+  const correct = TENSE_OPTIONS.find(t => t.key === currentQ.form);
+  const others = shuffle(TENSE_OPTIONS.filter(t => t.key !== currentQ.form)).slice(0, 3);
+  const options = shuffle([correct, ...others]);
+  
+  const colors = ["c-cyan", "c-yellow", "c-success", "c-pink", "c-purple", "c-lime"];
+  const choices = $("choices");
+  choices.innerHTML = "";
+  
+  options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.className = `choice-btn ${colors[i % colors.length]}`;
+    btn.innerHTML = `<div class="choice-title">${opt.label}</div><div class="choice-desc">${opt.desc}</div>`;
+    btn.onclick = () => grade(opt.key === currentQ.form, { 
+      type: "TENSE", 
+      picked: opt.label, 
+      correct: correct.label 
+    });
+    choices.appendChild(btn);
+  });
+}
+
+/* =========================================================
+   MEANING MODE
+========================================================= */
+function renderMeaning() {
+  show($("sentenceBox"));
+  show($("choices"));
+  $("sentenceText").textContent = currentQ.text;
+  
+  let options = MEANING_MAP[currentQ.form] || [];
+  if (options.length < 4) {
+    options = [
+      { key: "prediction", label: "Prediction", desc: "Guess about future" },
+      { key: "plan", label: "Plan", desc: "Already decided" },
+      { key: "schedule", label: "Schedule", desc: "Fixed timetable" },
+      { key: "offer_promise", label: "Offer/Promise", desc: "Help or promise" }
+    ];
+  }
+  options = shuffle(options).slice(0, 4);
+  
+  const correctLabel = (MEANING_MAP[currentQ.form]?.find(m => m.key === currentQ.intent)?.label) || currentQ.intent;
+  const colors = ["c-cyan", "c-yellow", "c-success", "c-pink"];
+  const choices = $("choices");
+  choices.innerHTML = "";
+  
+  options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.className = `choice-btn ${colors[i]}`;
+    btn.innerHTML = `<div class="choice-title">${opt.label}</div><div class="choice-desc">${opt.desc}</div>`;
+    btn.onclick = () => grade(opt.key === currentQ.intent, {
+      type: "MEANING",
+      picked: opt.label,
+      correct: correctLabel
+    });
+    choices.appendChild(btn);
+  });
+}
+
+/* =========================================================
+   GRADING
+========================================================= */
+function grade(correct, detail) {
+  if (!running || paused) return;
+  
+  const player = $("displayName").textContent;
+  const time = Math.floor(nowMs() / 1000);
+  
+  if (correct) {
+    streak++;
+    updateUI();
+    setFeedback("✅ Correct! Great job!", "correct");
+    
+    // Milestones
+    if (streak === 5) showMilestone("🔥 5 in a row!");
+    if (streak === 10) showMilestone("⚡ 10 streak!");
+    if (streak === 15) showMilestone("🌟 15! Almost there!");
+    if (streak === 20) showMilestone("💪 20! So close!");
+    
+    sendToGoogleSheets({
+      type: "ATTEMPT", student: player, time_seconds: time,
+      correct: true, streak, question_type: currentType,
+      sentence: currentQ.text, tense: currentQ.form
+    });
+    
+    if (streak >= GOAL) {
+      winGame();
+      return;
+    }
+    
+    setTimeout(() => { if (running && !paused) nextQuestion(); }, 700);
+    return;
+  }
+  
+  // Wrong
+  mistakes++;
+  mistakesByType[currentType]++;
+  streak = 0;
+  updateUI();
+  setFeedback(`❌ Wrong! Correct: ${detail.correct}`, "wrong");
+  
+  sendToGoogleSheets({
+    type: "ATTEMPT", student: player, time_seconds: time,
+    correct: false, streak: 0, question_type: currentType,
+    sentence: currentQ.text, tense: currentQ.form,
+    picked_answer: detail.picked || detail.attempt,
+    correct_answer: detail.correct
+  });
+  
+  if (currentType === "ORDER") clearOrder();
+  
+  setTimeout(() => { if (running && !paused) nextQuestion(); }, 1500);
+}
+
+function winGame() {
+  running = false;
+  if (timerInterval) clearInterval(timerInterval);
+  bgm.pause();
+  
+  const player = $("displayName").textContent;
+  const time = formatTime(nowMs());
+  
+  $("summary").innerHTML = `
+    <div class="summary-row"><span>Player</span><span class="summary-val">${player}</span></div>
+    <div class="summary-row"><span>Time</span><span class="summary-val">${time}</span></div>
+    <div class="summary-row"><span>Total Mistakes</span><span class="summary-val ${mistakes > 0 ? 'bad' : ''}">${mistakes}</span></div>
+    <div class="summary-row"><span>ORDER mistakes</span><span class="summary-val ${mistakesByType.ORDER > 0 ? 'bad' : ''}">${mistakesByType.ORDER}</span></div>
+    <div class="summary-row"><span>TENSE mistakes</span><span class="summary-val ${mistakesByType.TENSE > 0 ? 'bad' : ''}">${mistakesByType.TENSE}</span></div>
+    <div class="summary-row"><span>MEANING mistakes</span><span class="summary-val ${mistakesByType.MEANING > 0 ? 'bad' : ''}">${mistakesByType.MEANING}</span></div>
+    <div class="summary-row"><span>Level</span><span class="summary-val">${level}</span></div>
+  `;
+  
+  $("winOverlay").classList.add("show");
+  
+  sendToGoogleSheets({
+    type: "SESSION_COMPLETE", student: player,
+    time_seconds: Math.floor(nowMs() / 1000),
+    total_mistakes: mistakes,
+    order_mistakes: mistakesByType.ORDER,
+    tense_mistakes: mistakesByType.TENSE,
+    meaning_mistakes: mistakesByType.MEANING,
+    level
+  });
+}
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+function setLevel(l) {
+  level = l;
+  $("easyBtn").classList.toggle("active", l === "easy");
+  $("hardBtn").classList.toggle("active", l === "hard");
+}
+
+function toggleMusic() {
+  bgm.volume = 0.3;
+  if (!musicOn) {
+    bgm.play().then(() => {
+      musicOn = true;
+      $("musicBtn").textContent = "🔊 Music";
+      $("musicBtn").classList.add("active");
+    }).catch(() => {});
+  } else {
+    bgm.pause();
+    musicOn = false;
+    $("musicBtn").textContent = "🔇 Music";
+    $("musicBtn").classList.remove("active");
+  }
+}
+
+function togglePause() {
+  if (!running) return;
+  if (paused) {
+    paused = false;
+    $("pauseOverlay").classList.remove("show");
+    if (musicOn) bgm.play().catch(() => {});
+  } else {
+    paused = true;
+    $("pauseOverlay").classList.add("show");
+    bgm.pause();
+  }
+}
+
+/* =========================================================
+   EVENTS
+========================================================= */
+$("startBtn").onclick = startGame;
+$("resetBtn").onclick = resetGame;
+$("easyBtn").onclick = () => setLevel("easy");
+$("hardBtn").onclick = () => setLevel("hard");
+$("musicBtn").onclick = toggleMusic;
+$("pauseBtn").onclick = togglePause;
+$("clearBtn").onclick = clearOrder;
+$("checkBtn").onclick = checkOrder;
+$("resumeBtn").onclick = togglePause;
+$("exitBtn").onclick = resetGame;
+$("playAgainBtn").onclick = () => {
+  $("winOverlay").classList.remove("show");
+  resetGame();
+};
+
+// Enter key to start
+$("playerName").addEventListener("keypress", e => {
+  if (e.key === "Enter" && !running) startGame();
+});
+
+// Init
+setLevel("easy");
+updateUI();
+</script>
+</body>
 </html>
