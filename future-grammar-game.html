@@ -211,8 +211,8 @@
 
     /* BUILT AREA */
     .built {
-      background: var(--card);
-      border: 2px dashed var(--cyan);
+      background: rgba(255, 255, 255, 0.2);
+      border: 3px dashed #4ecdc4;
       border-radius: 12px;
       padding: 12px;
       min-height: 55px;
@@ -225,7 +225,8 @@
 
     .built.active {
       border-style: solid;
-      border-color: var(--green);
+      border-color: #95e1d3;
+      box-shadow: 0 0 20px rgba(149, 225, 211, 0.5);
     }
 
     .built.empty {
@@ -235,16 +236,21 @@
     }
 
     .chip {
-      background: var(--cyan);
-      color: #000;
+      background: linear-gradient(135deg, #4ecdc4, #44a8a1);
+      color: #fff;
       padding: 8px 14px;
       border-radius: 8px;
       font-weight: 900;
       font-size: 0.9rem;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
     }
 
-    .chip:hover { opacity: 0.9; }
+    .chip:hover { 
+      opacity: 0.9;
+      transform: translateY(-2px);
+      transition: all 0.2s;
+    }
 
     /* WORD BANK */
     .words {
