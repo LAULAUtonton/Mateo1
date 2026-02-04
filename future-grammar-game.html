@@ -1,646 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Future Grammar Mastery</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #0f172a;
       --surface: #1e293b;
       --card: #334155;
-      --card-hover: #475569;
       --text: #f8fafc;
-      --text-dim: #94a3b8;
-      --primary: #f97316;
-      --primary-glow: rgba(249, 115, 22, 0.4);
-      --secondary: #06b6d4;
-      --success: #22c55e;
-      --success-glow: rgba(34, 197, 94, 0.4);
-      --error: #ef4444;
-      --error-glow: rgba(239, 68, 68, 0.4);
+      --dim: #94a3b8;
+      --orange: #f97316;
+      --cyan: #06b6d4;
+      --green: #22c55e;
+      --red: #ef4444;
       --yellow: #fbbf24;
       --purple: #a78bfa;
       --pink: #f472b6;
-      --lime: #a3e635;
-      --radius: 16px;
-      --radius-sm: 12px;
-      --radius-xs: 8px;
-      --shadow: 0 4px 20px rgba(0,0,0,0.3);
-      --transition: all 0.2s ease;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; overflow-x: hidden; }
     
-    body {
-      font-family: 'Nunito', system-ui, sans-serif;
+    html, body {
+      height: 100%;
+      font-family: 'Nunito', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.4;
+      overflow-x: hidden;
     }
 
-    /* LAYOUT */
     .app {
-      min-height: 100vh;
-      max-width: 900px;
+      width: 100%;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 12px;
+      padding: 8px;
+      min-height: 100%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     /* HEADER */
     .header {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      padding: 12px 16px;
-      background: var(--surface);
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .logo {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--primary), var(--yellow));
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      box-shadow: 0 0 20px var(--primary-glow);
-      animation: pulse 2s ease-in-out infinite;
+      font-size: 20px;
+      flex-shrink: 0;
     }
 
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 20px var(--primary-glow); }
-      50% { box-shadow: 0 0 30px var(--primary-glow), 0 0 40px var(--primary-glow); }
-    }
+    .title { font-size: 1rem; font-weight: 900; }
+    .subtitle { font-size: 0.7rem; color: var(--dim); }
+    .subtitle b { color: var(--orange); }
 
-    .title { font-size: 1.3rem; font-weight: 900; }
-    .subtitle { font-size: 0.8rem; color: var(--text-dim); font-weight: 700; }
-    .subtitle b { color: var(--primary); }
-
-    .name-input {
+    .name-box {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: var(--card);
-      padding: 8px 12px;
-      border-radius: var(--radius-sm);
-      border: 2px solid transparent;
-      transition: var(--transition);
+      padding: 6px 10px;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 150px;
+      max-width: 200px;
     }
 
-    .name-input:focus-within {
-      border-color: var(--primary);
-      box-shadow: 0 0 15px var(--primary-glow);
-    }
+    .name-box label { font-size: 0.75rem; color: var(--dim); font-weight: 700; }
 
-    .name-input label {
-      font-weight: 800;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-    }
-
-    .name-input input {
+    .name-box input {
+      flex: 1;
       background: transparent;
       border: none;
       outline: none;
       color: var(--text);
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 800;
-      width: 120px;
+      width: 100%;
+      min-width: 0;
     }
-
-    .name-input input::placeholder { color: var(--text-dim); }
 
     /* STATS */
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
 
     .stat {
       background: var(--surface);
-      border-radius: var(--radius-sm);
-      padding: 10px;
+      border-radius: 10px;
+      padding: 8px 6px;
       text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: var(--transition);
     }
 
-    .stat:hover { transform: translateY(-2px); }
-
-    .stat-label {
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .stat-value {
-      font-size: 1.1rem;
-      font-weight: 900;
-      margin-top: 4px;
-    }
-
-    .stat-value.streak { color: var(--primary); }
-    .stat-value.mistakes { color: var(--error); }
-    .stat-value.time { color: var(--secondary); }
+    .stat-label { font-size: 0.6rem; color: var(--dim); font-weight: 800; text-transform: uppercase; }
+    .stat-value { font-size: 0.9rem; font-weight: 900; margin-top: 2px; }
+    .stat-value.orange { color: var(--orange); }
+    .stat-value.red { color: var(--red); }
+    .stat-value.cyan { color: var(--cyan); }
 
     /* PROGRESS */
-    .progress-wrap {
+    .progress-box {
       background: var(--surface);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 10px 12px;
     }
 
-    .progress-header {
+    .progress-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .progress-title {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 800;
-      color: var(--text-dim);
+      margin-bottom: 6px;
     }
 
-    .progress-count {
-      font-size: 0.9rem;
-      font-weight: 900;
-      color: var(--primary);
-    }
+    .progress-top span:last-child { color: var(--orange); }
 
     .progress-bar {
-      height: 12px;
+      height: 10px;
       background: var(--card);
-      border-radius: 999px;
+      border-radius: 99px;
       overflow: hidden;
-      position: relative;
     }
 
     .progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--primary), var(--yellow), var(--primary));
-      background-size: 200% 100%;
-      border-radius: 999px;
-      transition: width 0.4s ease;
-      animation: shimmer 2s linear infinite;
+      background: linear-gradient(90deg, var(--orange), var(--yellow));
+      border-radius: 99px;
+      transition: width 0.3s;
     }
 
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .progress-fill.active {
-      box-shadow: 0 0 10px var(--primary-glow);
-    }
-
-    /* GAME AREA */
-    .game-area {
+    /* GAME */
+    .game {
       flex: 1;
       background: var(--surface);
-      border-radius: var(--radius);
-      padding: 16px;
+      border-radius: 12px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
-      min-height: 300px;
+      gap: 10px;
+      min-height: 280px;
+      overflow: hidden;
     }
 
-    /* QUESTION TYPE BADGE */
-    .q-type {
-      display: flex;
-      justify-content: center;
-    }
-
-    .q-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      background: var(--primary);
-      color: #000;
-      font-weight: 900;
-      font-size: 0.85rem;
-      border-radius: 999px;
-      box-shadow: 0 0 15px var(--primary-glow);
-    }
-
-    /* SENTENCE DISPLAY */
-    .sentence-box {
-      background: var(--bg);
-      border: 3px solid var(--primary);
-      border-radius: var(--radius);
-      padding: 20px;
+    .badge {
       text-align: center;
-      box-shadow: 0 0 20px var(--primary-glow);
     }
 
-    .sentence-text {
-      font-size: 1.3rem;
+    .badge span {
+      display: inline-block;
+      background: var(--orange);
+      color: #000;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    /* SENTENCE */
+    .sentence {
+      background: var(--bg);
+      border: 2px solid var(--orange);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      font-size: 1.1rem;
       font-weight: 900;
       line-height: 1.4;
-      color: var(--text);
     }
 
-    /* BUILT AREA (for ordering) */
-    .built-area {
-      background: linear-gradient(135deg, var(--card), var(--surface));
-      border: 3px dashed var(--secondary);
-      border-radius: var(--radius);
-      padding: 16px;
-      min-height: 70px;
+    /* BUILT AREA */
+    .built {
+      background: var(--card);
+      border: 2px dashed var(--cyan);
+      border-radius: 12px;
+      padding: 12px;
+      min-height: 55px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
       justify-content: center;
-      transition: var(--transition);
     }
 
-    .built-area.has-words {
+    .built.active {
       border-style: solid;
-      border-color: var(--success);
-      box-shadow: 0 0 15px var(--success-glow);
+      border-color: var(--green);
     }
 
-    .built-area.empty-msg {
-      color: var(--text-dim);
+    .built.empty {
+      color: var(--dim);
+      font-size: 0.85rem;
       font-weight: 700;
     }
 
-    .word-chip {
-      background: var(--secondary);
+    .chip {
+      background: var(--cyan);
       color: #000;
-      padding: 10px 16px;
-      border-radius: var(--radius-xs);
+      padding: 8px 14px;
+      border-radius: 8px;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      animation: chipIn 0.2s ease;
     }
 
-    @keyframes chipIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .word-chip:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
-    }
+    .chip:hover { opacity: 0.9; }
 
     /* WORD BANK */
-    .word-bank {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 16px;
+    .words {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 12px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
-      align-content: flex-start;
       flex: 1;
-      min-height: 100px;
+      align-content: flex-start;
+      overflow-y: auto;
     }
 
     .word-btn {
       background: var(--text);
       color: var(--bg);
       border: none;
-      padding: 12px 18px;
-      border-radius: var(--radius-xs);
+      padding: 10px 16px;
+      border-radius: 8px;
       font-family: inherit;
       font-weight: 900;
-      font-size: 1rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-
-    .word-btn:hover:not(:disabled) {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(255,255,255,0.2);
-    }
-
-    .word-btn:active:not(:disabled) {
-      transform: scale(0.95);
     }
 
     .word-btn:disabled {
       background: var(--yellow);
       color: #000;
-      cursor: default;
-      opacity: 0.9;
     }
 
-    /* CHOICE CARDS */
+    /* CHOICES */
     .choices {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
       flex: 1;
     }
 
-    .choice-btn {
+    .choice {
       border: none;
-      border-radius: var(--radius);
-      padding: 16px;
+      border-radius: 12px;
+      padding: 14px 12px;
       cursor: pointer;
       text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
+      font-family: inherit;
     }
 
-    .choice-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
+    .choice:active { transform: scale(0.98); }
 
-    .choice-btn:hover::before {
-      left: 100%;
-    }
+    .choice-title { font-size: 0.95rem; font-weight: 900; }
+    .choice-desc { font-size: 0.7rem; font-weight: 700; opacity: 0.85; margin-top: 2px; }
 
-    .choice-btn:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    }
-
-    .choice-btn:active {
-      transform: scale(0.98);
-    }
-
-    .choice-title {
-      font-size: 1.1rem;
-      font-weight: 900;
-    }
-
-    .choice-desc {
-      font-size: 0.8rem;
-      font-weight: 700;
-      opacity: 0.85;
-    }
-
-    .c-cyan { background: linear-gradient(135deg, var(--secondary), #0891b2); color: #000; }
-    .c-yellow { background: linear-gradient(135deg, var(--yellow), #f59e0b); color: #000; }
-    .c-success { background: linear-gradient(135deg, var(--success), #16a34a); color: #fff; }
-    .c-pink { background: linear-gradient(135deg, var(--pink), #db2777); color: #fff; }
-    .c-purple { background: linear-gradient(135deg, var(--purple), #7c3aed); color: #fff; }
-    .c-lime { background: linear-gradient(135deg, var(--lime), #65a30d); color: #000; }
+    .c1 { background: linear-gradient(135deg, var(--cyan), #0891b2); color: #000; }
+    .c2 { background: linear-gradient(135deg, var(--yellow), #f59e0b); color: #000; }
+    .c3 { background: linear-gradient(135deg, var(--green), #16a34a); color: #fff; }
+    .c4 { background: linear-gradient(135deg, var(--pink), #db2777); color: #fff; }
 
     /* FEEDBACK */
     .feedback {
       text-align: center;
       font-weight: 900;
-      font-size: 1.1rem;
-      min-height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: var(--transition);
+      font-size: 0.95rem;
+      min-height: 26px;
     }
 
-    .feedback.correct {
-      color: var(--success);
-      animation: feedbackPop 0.3s ease;
-    }
+    .feedback.ok { color: var(--green); }
+    .feedback.no { color: var(--red); }
 
-    .feedback.wrong {
-      color: var(--error);
-      animation: shake 0.4s ease;
-    }
-
-    @keyframes feedbackPop {
-      0% { transform: scale(0.8); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-8px); }
-      75% { transform: translateX(8px); }
-    }
-
-    /* ACTION BUTTONS */
+    /* BUTTONS */
     .actions {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
-      flex-wrap: wrap;
     }
 
     .btn {
       border: none;
-      border-radius: var(--radius-sm);
-      padding: 12px 24px;
+      border-radius: 10px;
+      padding: 10px 20px;
       font-family: inherit;
       font-weight: 900;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn:active {
-      transform: scale(0.95);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #ea580c);
-      color: #fff;
-      box-shadow: 0 4px 15px var(--primary-glow);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 8px 25px var(--primary-glow);
-    }
-
-    .btn-secondary {
-      background: var(--card);
-      color: var(--text);
-      border: 2px solid var(--card-hover);
-    }
-
-    .btn-success {
-      background: linear-gradient(135deg, var(--success), #16a34a);
-      color: #fff;
-      box-shadow: 0 4px 15px var(--success-glow);
-    }
-
-    .btn-danger {
-      background: linear-gradient(135deg, var(--error), #dc2626);
-      color: #fff;
-    }
-
-    .btn-check {
-      background: linear-gradient(135deg, var(--yellow), #f59e0b);
-      color: #000;
-      font-size: 1.1rem;
-      padding: 14px 32px;
-      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
-    }
+    .btn-orange { background: var(--orange); color: #fff; }
+    .btn-gray { background: var(--card); color: var(--text); }
+    .btn-yellow { background: var(--yellow); color: #000; }
 
     /* CONTROLS */
     .controls {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 8px;
-    }
-
-    .ctrl-btn {
-      background: var(--surface);
-      border: 2px solid var(--card);
-      border-radius: var(--radius-sm);
-      padding: 10px;
-      color: var(--text);
-      font-family: inherit;
-      font-weight: 800;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      grid-template-columns: repeat(3, 1fr);
       gap: 6px;
     }
 
-    .ctrl-btn:hover {
-      border-color: var(--primary);
-      background: var(--card);
+    .ctrl {
+      background: var(--surface);
+      border: none;
+      border-radius: 10px;
+      padding: 10px 8px;
+      color: var(--text);
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      text-align: center;
     }
 
-    .ctrl-btn.active {
-      border-color: var(--success);
-      background: var(--success);
-      color: #000;
-    }
+    .ctrl:hover { background: var(--card); }
+    .ctrl.on { background: var(--green); color: #000; }
 
-    /* OVERLAYS */
+    /* OVERLAY */
     .overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      z-index: 1000;
+      padding: 16px;
+      z-index: 100;
     }
 
     .overlay.show { display: flex; }
 
-    .overlay-card {
+    .modal {
       background: var(--surface);
-      border: 2px solid var(--primary);
-      border-radius: var(--radius);
-      padding: 24px;
-      max-width: 400px;
+      border: 2px solid var(--orange);
+      border-radius: 16px;
+      padding: 20px;
       width: 100%;
+      max-width: 350px;
       text-align: center;
-      box-shadow: 0 0 40px var(--primary-glow);
-      animation: overlayIn 0.3s ease;
     }
 
-    @keyframes overlayIn {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    .modal-icon { font-size: 40px; margin-bottom: 10px; }
+    .modal-title { font-size: 1.3rem; font-weight: 900; color: var(--orange); margin-bottom: 6px; }
+    .modal-text { color: var(--dim); font-size: 0.9rem; margin-bottom: 14px; }
 
-    .overlay-icon {
-      font-size: 48px;
-      margin-bottom: 12px;
-      animation: bounce 0.6s ease infinite alternate;
-    }
-
-    @keyframes bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
-    }
-
-    .overlay-title {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .overlay-text {
-      color: var(--text-dim);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    /* SUMMARY */
     .summary {
       background: var(--card);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      margin-bottom: 16px;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 14px;
       text-align: left;
+      font-size: 0.85rem;
     }
 
-    .summary-row {
+    .summary div {
       display: flex;
       justify-content: space-between;
-      padding: 8px 0;
+      padding: 6px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      font-weight: 700;
     }
 
-    .summary-row:last-child { border-bottom: none; }
-
-    .summary-val {
-      color: var(--secondary);
-      font-weight: 900;
-    }
-
-    .summary-val.bad { color: var(--error); }
+    .summary div:last-child { border: none; }
+    .summary .val { font-weight: 900; color: var(--cyan); }
+    .summary .bad { color: var(--red); }
 
     /* MILESTONE */
     .milestone {
@@ -648,712 +398,511 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
-      background: var(--primary);
+      background: var(--orange);
       color: #000;
-      padding: 20px 40px;
-      border-radius: var(--radius);
-      font-size: 1.5rem;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 1.2rem;
       font-weight: 900;
-      z-index: 999;
-      box-shadow: 0 0 50px var(--primary-glow);
+      z-index: 99;
       pointer-events: none;
+      opacity: 0;
     }
 
     .milestone.show {
-      animation: milestoneAnim 1.5s ease forwards;
+      animation: pop 1.2s ease forwards;
     }
 
-    @keyframes milestoneAnim {
+    @keyframes pop {
       0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-      20% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-      80% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      15% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+      85% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
       100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
     }
 
+    .hidden { display: none !important; }
+
     /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .app { padding: 8px; }
-      .header { flex-direction: column; align-items: stretch; padding: 10px; }
+    @media (max-width: 480px) {
+      .header { flex-direction: column; align-items: stretch; }
       .brand { justify-content: center; }
-      .name-input { justify-content: center; }
-      .name-input input { width: 100%; }
+      .name-box { max-width: 100%; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .choices { grid-template-columns: 1fr; }
-      .sentence-text { font-size: 1.1rem; }
-      .title { font-size: 1.1rem; }
       .controls { grid-template-columns: repeat(2, 1fr); }
+      .sentence { font-size: 1rem; padding: 12px; }
+      .title { font-size: 0.95rem; }
     }
 
-    .hidden { display: none !important; }
+    @media (min-width: 481px) and (max-width: 768px) {
+      .app { max-width: 100%; padding: 10px; }
+    }
+
+    @media (min-width: 769px) {
+      .app { max-width: 650px; }
+      .game { min-height: 320px; }
+    }
   </style>
 </head>
-
 <body>
-  <!-- Milestone popup -->
-  <div class="milestone" id="milestone"></div>
 
-  <!-- Win overlay -->
-  <div class="overlay" id="winOverlay">
-    <div class="overlay-card">
-      <div class="overlay-icon">🏆</div>
-      <div class="overlay-title">Mastery Complete!</div>
-      <div class="overlay-text">Amazing! You got 25 correct in a row!</div>
-      <div class="summary" id="summary"></div>
-      <div class="actions">
-        <button class="btn btn-primary" id="playAgainBtn">🔄 Play Again</button>
+<div class="milestone" id="milestone"></div>
+
+<div class="overlay" id="winOverlay">
+  <div class="modal">
+    <div class="modal-icon">🏆</div>
+    <div class="modal-title">Mastery Complete!</div>
+    <div class="modal-text">You got 25 correct in a row!</div>
+    <div class="summary" id="summary"></div>
+    <button class="btn btn-orange" id="againBtn">🔄 Play Again</button>
+  </div>
+</div>
+
+<div class="overlay" id="pauseOverlay">
+  <div class="modal">
+    <div class="modal-icon">⏸️</div>
+    <div class="modal-title">Paused</div>
+    <div class="modal-text">Take a break!</div>
+    <div class="actions">
+      <button class="btn btn-orange" id="resumeBtn">▶️ Resume</button>
+      <button class="btn btn-gray" id="quitBtn">⏹️ Quit</button>
+    </div>
+  </div>
+</div>
+
+<div class="app">
+  <div class="header">
+    <div class="brand">
+      <div class="logo">🎯</div>
+      <div>
+        <div class="title">Future Grammar Mastery</div>
+        <div class="subtitle">Get <b>25 correct</b> in a row!</div>
       </div>
+    </div>
+    <div class="name-box">
+      <label>Name:</label>
+      <input type="text" id="nameInput" placeholder="Your name">
     </div>
   </div>
 
-  <!-- Pause overlay -->
-  <div class="overlay" id="pauseOverlay">
-    <div class="overlay-card">
-      <div class="overlay-icon">⏸️</div>
-      <div class="overlay-title">Paused</div>
-      <div class="overlay-text">Take a break! Resume when ready.</div>
-      <div class="actions">
-        <button class="btn btn-success" id="resumeBtn">▶️ Resume</button>
-        <button class="btn btn-danger" id="exitBtn">⏹️ Exit</button>
-      </div>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Player</div>
+      <div class="stat-value" id="playerDisplay">---</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Streak</div>
+      <div class="stat-value orange" id="streakDisplay">0/25</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Mistakes</div>
+      <div class="stat-value red" id="mistakesDisplay">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Time</div>
+      <div class="stat-value cyan" id="timeDisplay">00:00</div>
     </div>
   </div>
 
-  <div class="app">
-    <!-- Header -->
-    <div class="header">
-      <div class="brand">
-        <div class="logo">🎯</div>
-        <div>
-          <div class="title">Future Grammar Mastery</div>
-          <div class="subtitle">Get <b>25 correct</b> in a row to win!</div>
-        </div>
-      </div>
-      <div class="name-input">
-        <label>Name:</label>
-        <input type="text" id="playerName" placeholder="Your name" data-testid="player-name">
-      </div>
+  <div class="progress-box">
+    <div class="progress-top">
+      <span>Progress</span>
+      <span id="pctDisplay">0%</span>
     </div>
-
-    <!-- Stats -->
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-label">Player</div>
-        <div class="stat-value" id="displayName">---</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Streak</div>
-        <div class="stat-value streak" id="streakDisplay">0/25</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Mistakes</div>
-        <div class="stat-value mistakes" id="mistakesDisplay">0</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Time</div>
-        <div class="stat-value time" id="timerDisplay">00:00</div>
-      </div>
-    </div>
-
-    <!-- Progress -->
-    <div class="progress-wrap">
-      <div class="progress-header">
-        <div class="progress-title">Progress to Mastery</div>
-        <div class="progress-count" id="progressCount">0%</div>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-    </div>
-
-    <!-- Game Area -->
-    <div class="game-area">
-      <div class="q-type">
-        <div class="q-badge" id="qBadge">🎮 Ready to Start</div>
-      </div>
-
-      <!-- Sentence display -->
-      <div class="sentence-box hidden" id="sentenceBox">
-        <div class="sentence-text" id="sentenceText"></div>
-      </div>
-
-      <!-- Built area for ordering -->
-      <div class="built-area hidden" id="builtArea"></div>
-
-      <!-- Word bank -->
-      <div class="word-bank hidden" id="wordBank"></div>
-
-      <!-- Choice cards -->
-      <div class="choices hidden" id="choices"></div>
-
-      <!-- Feedback -->
-      <div class="feedback" id="feedback"></div>
-
-      <!-- Order actions -->
-      <div class="actions hidden" id="orderActions">
-        <button class="btn btn-secondary" id="clearBtn">🗑️ Clear</button>
-        <button class="btn btn-check" id="checkBtn" data-testid="check-btn">✓ Check Answer</button>
-      </div>
-    </div>
-
-    <!-- Controls -->
-    <div class="controls">
-      <button class="ctrl-btn" id="startBtn" data-testid="start-btn">▶️ Start</button>
-      <button class="ctrl-btn" id="resetBtn">↺ Reset</button>
-      <button class="ctrl-btn" id="easyBtn">😊 Easy</button>
-      <button class="ctrl-btn" id="hardBtn">🔥 Hard</button>
-      <button class="ctrl-btn" id="pauseBtn">⏸️ Pause</button>
-      <button class="ctrl-btn" id="musicBtn">🔇 Music</button>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
     </div>
   </div>
 
-  <audio id="bgm" loop preload="auto"><source src="audio/koala2.mp3" type="audio/mpeg"></audio>
+  <div class="game">
+    <div class="badge"><span id="typeBadge">🎮 Ready</span></div>
+    
+    <div class="sentence hidden" id="sentenceBox"></div>
+    <div class="built empty hidden" id="builtBox">👆 Tap words to build sentence...</div>
+    <div class="words hidden" id="wordsBox"></div>
+    <div class="choices hidden" id="choicesBox"></div>
+    
+    <div class="feedback" id="feedback"></div>
+    
+    <div class="actions hidden" id="orderBtns">
+      <button class="btn btn-gray" id="clearBtn">🗑️ Clear</button>
+      <button class="btn btn-yellow" id="checkBtn">✓ Check</button>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl" id="startBtn">▶️ Start</button>
+    <button class="ctrl" id="resetBtn">↺ Reset</button>
+    <button class="ctrl" id="easyBtn">😊 Easy</button>
+    <button class="ctrl" id="hardBtn">🔥 Hard</button>
+    <button class="ctrl" id="pauseBtn">⏸️ Pause</button>
+    <button class="ctrl" id="musicBtn">🔇 Music</button>
+  </div>
+</div>
+
+<audio id="bgm" loop><source src="audio/bgm.mp3" type="audio/mpeg"></audio>
 
 <script>
-/* =========================================================
-   GOOGLE SHEETS
-========================================================= */
-const SHEET_ENDPOINT = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
-const SECRET_KEY = "GRAMMAR_GAME_2024";
-
-async function sendToGoogleSheets(data) {
-  if (!SHEET_ENDPOINT || SHEET_ENDPOINT.includes("YOUR_GOOGLE")) {
-    console.log("Sheets not configured:", data);
-    return;
-  }
-  try {
-    await fetch(SHEET_ENDPOINT, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ secret: SECRET_KEY, ...data })
-    });
-  } catch (e) { console.error(e); }
-}
-
-/* =========================================================
-   QUESTION BANK
-========================================================= */
-const BANK = [
-  { text: "The train leaves at 8:10 tomorrow.", form: "present_simple", intent: "schedule" },
-  { text: "School starts at 9 o'clock on Monday.", form: "present_simple", intent: "schedule" },
-  { text: "The concert begins at 7 p.m. on Friday.", form: "present_simple", intent: "schedule" },
-  { text: "The museum closes at 6 p.m.", form: "present_simple", intent: "schedule" },
-  { text: "Does the match start at noon?", form: "present_simple", intent: "schedule" },
-  { text: "I'm meeting my friends at 6 p.m.", form: "present_continuous", intent: "arrangement" },
-  { text: "We're having dinner together tomorrow.", form: "present_continuous", intent: "arrangement" },
-  { text: "She's seeing the dentist on Friday.", form: "present_continuous", intent: "arrangement" },
-  { text: "They're coming over for lunch tomorrow.", form: "present_continuous", intent: "arrangement" },
-  { text: "Are you visiting your grandma this weekend?", form: "present_continuous", intent: "arrangement" },
-  { text: "I think it will rain later.", form: "will", intent: "prediction" },
-  { text: "They will probably win the match.", form: "will", intent: "prediction" },
-  { text: "Maybe we will have a test tomorrow.", form: "will", intent: "prediction" },
-  { text: "Don't worry, I'll help you.", form: "will", intent: "offer_promise" },
-  { text: "I won't tell anyone. I promise.", form: "will", intent: "offer_promise" },
-  { text: "Okay, I'll do it now.", form: "will", intent: "decision_now" },
-  { text: "Wait—I'll message her right now.", form: "will", intent: "decision_now" },
-  { text: "The show will start in five minutes.", form: "will", intent: "announcement" },
-  { text: "I'm going to study tonight.", form: "going_to", intent: "plan" },
-  { text: "We're going to meet after school.", form: "going_to", intent: "plan" },
-  { text: "Are you going to watch the new episode?", form: "going_to", intent: "plan" },
-  { text: "Look at those clouds! It's going to rain.", form: "going_to", intent: "evidence_prediction" },
-  { text: "That glass is going to fall!", form: "going_to", intent: "evidence_prediction" },
-  { text: "If you don't study, you'll fail the test.", form: "first_conditional", intent: "warning" },
-  { text: "If you feel tired, take a break.", form: "first_conditional", intent: "advice" },
-  { text: "If it rains, we'll stay at home.", form: "first_conditional", intent: "plan" },
-  { text: "If she studies, she'll do well.", form: "first_conditional", intent: "prediction" }
-];
-
-const TENSE_OPTIONS = [
-  { key: "present_simple", label: "Present Simple", desc: "Schedules & timetables" },
-  { key: "present_continuous", label: "Present Continuous", desc: "Arrangements" },
-  { key: "will", label: "Will (Future)", desc: "Predictions & promises" },
-  { key: "going_to", label: "Going to", desc: "Plans & evidence" },
-  { key: "first_conditional", label: "First Conditional", desc: "If + present → will" }
-];
-
-const MEANING_MAP = {
-  will: [
-    { key: "prediction", label: "Prediction", desc: "I think / probably" },
-    { key: "offer_promise", label: "Offer / Promise", desc: "I'll help / I promise" },
-    { key: "decision_now", label: "Instant decision", desc: "Decided right now" },
-    { key: "announcement", label: "Announcement", desc: "Official information" }
-  ],
-  going_to: [
-    { key: "plan", label: "Plan / Intention", desc: "Already decided" },
-    { key: "evidence_prediction", label: "Evidence prediction", desc: "Look! I can see..." }
-  ],
-  present_simple: [{ key: "schedule", label: "Schedule", desc: "Timetable / fixed time" }],
-  present_continuous: [{ key: "arrangement", label: "Arrangement", desc: "Fixed with someone" }],
-  first_conditional: [
-    { key: "warning", label: "Warning", desc: "Bad consequence" },
-    { key: "advice", label: "Advice", desc: "Suggestion" },
-    { key: "plan", label: "Conditional plan", desc: "If X, we do Y" },
-    { key: "prediction", label: "Prediction", desc: "If X, Y happens" }
-  ]
-};
-
-/* =========================================================
-   STATE
-========================================================= */
+// === CONFIG ===
+const SHEET_URL = "YOUR_GOOGLE_SCRIPT_URL";
+const SECRET = "GRAMMAR_2024";
 const GOAL = 25;
-let level = "easy";
-let running = false;
-let paused = false;
-let streak = 0;
-let mistakes = 0;
-let mistakesByType = { ORDER: 0, TENSE: 0, MEANING: 0 };
-let startTime = null;
-let timerInterval = null;
-let musicOn = false;
-let currentType = "";
-let currentQ = null;
-let built = [];
-let wordBtns = [];
 
-const $ = id => document.getElementById(id);
-const bgm = $("bgm");
+// === QUESTIONS ===
+const BANK = [
+  {t:"The train leaves at 8:10 tomorrow.",f:"ps",m:"schedule"},
+  {t:"School starts at 9 on Monday.",f:"ps",m:"schedule"},
+  {t:"The concert begins at 7 p.m.",f:"ps",m:"schedule"},
+  {t:"I'm meeting friends at 6 p.m.",f:"pc",m:"arrangement"},
+  {t:"We're having dinner tomorrow.",f:"pc",m:"arrangement"},
+  {t:"She's seeing the dentist Friday.",f:"pc",m:"arrangement"},
+  {t:"I think it will rain later.",f:"will",m:"prediction"},
+  {t:"They will probably win.",f:"will",m:"prediction"},
+  {t:"Don't worry, I'll help you.",f:"will",m:"offer"},
+  {t:"I won't tell anyone.",f:"will",m:"promise"},
+  {t:"Okay, I'll do it now.",f:"will",m:"decision"},
+  {t:"I'm going to study tonight.",f:"going",m:"plan"},
+  {t:"We're going to meet after school.",f:"going",m:"plan"},
+  {t:"Look! It's going to rain.",f:"going",m:"evidence"},
+  {t:"That glass is going to fall!",f:"going",m:"evidence"},
+  {t:"If you study, you'll pass.",f:"cond",m:"result"},
+  {t:"If it rains, we'll stay home.",f:"cond",m:"plan"},
+  {t:"If you're tired, take a break.",f:"cond",m:"advice"}
+];
 
-/* =========================================================
-   HELPERS
-========================================================= */
-const shuffle = arr => {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-};
+const TENSES = [
+  {k:"ps",l:"Present Simple",d:"Schedules"},
+  {k:"pc",l:"Present Continuous",d:"Arrangements"},
+  {k:"will",l:"Will",d:"Predictions/Promises"},
+  {k:"going",l:"Going to",d:"Plans/Evidence"},
+  {k:"cond",l:"First Conditional",d:"If + will"}
+];
 
-const formatTime = ms => {
-  const s = Math.floor(ms / 1000);
-  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
-};
+// === STATE ===
+let level="easy", running=false, paused=false;
+let streak=0, mistakes=0, errByType={ORDER:0,TENSE:0,MEANING:0};
+let startT=null, timer=null, musicOn=false;
+let qType="", curQ=null, built=[], wordBtns=[];
 
-const nowMs = () => startTime ? Date.now() - startTime : 0;
+const $=id=>document.getElementById(id);
+const bgm=$("bgm");
+const shuffle=a=>{let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
 
-/* =========================================================
-   UI UPDATES
-========================================================= */
-function updateUI() {
-  $("streakDisplay").textContent = `${streak}/${GOAL}`;
-  $("mistakesDisplay").textContent = mistakes;
-  const pct = Math.round((streak / GOAL) * 100);
-  $("progressFill").style.width = `${pct}%`;
-  $("progressCount").textContent = `${pct}%`;
-  
-  if (running && streak > 0) {
-    $("progressFill").classList.add("active");
-  } else {
-    $("progressFill").classList.remove("active");
-  }
+// === UI ===
+function updateUI(){
+  $("streakDisplay").textContent=`${streak}/${GOAL}`;
+  $("mistakesDisplay").textContent=mistakes;
+  const p=Math.round(streak/GOAL*100);
+  $("progressFill").style.width=p+"%";
+  $("pctDisplay").textContent=p+"%";
 }
 
-function updateTimer() {
-  $("timerDisplay").textContent = formatTime(nowMs());
+function updateTime(){
+  if(!startT)return;
+  const s=Math.floor((Date.now()-startT)/1000);
+  $("timeDisplay").textContent=`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
 }
 
-function setFeedback(text, type = null) {
-  const fb = $("feedback");
-  fb.textContent = text;
-  fb.className = "feedback";
-  if (type === "correct") fb.classList.add("correct");
-  if (type === "wrong") fb.classList.add("wrong");
+function setFeedback(t,ok=null){
+  const f=$("feedback");
+  f.textContent=t;
+  f.className="feedback"+(ok===true?" ok":"")+(ok===false?" no":"");
 }
 
-function setBadge(icon, text) {
-  $("qBadge").innerHTML = `${icon} ${text}`;
-}
+function show(el){el.classList.remove("hidden");}
+function hide(el){el.classList.add("hidden");}
 
-function show(el) { el.classList.remove("hidden"); }
-function hide(el) { el.classList.add("hidden"); }
-
-function resetView() {
-  setFeedback("");
+function reset(){
   hide($("sentenceBox"));
-  hide($("builtArea"));
-  hide($("wordBank"));
-  hide($("choices"));
-  hide($("orderActions"));
-  $("choices").innerHTML = "";
-  $("wordBank").innerHTML = "";
-  $("builtArea").innerHTML = "";
-  built = [];
-  wordBtns = [];
+  hide($("builtBox"));
+  hide($("wordsBox"));
+  hide($("choicesBox"));
+  hide($("orderBtns"));
+  $("choicesBox").innerHTML="";
+  $("wordsBox").innerHTML="";
+  $("builtBox").innerHTML="";
+  built=[];wordBtns=[];
+  setFeedback("");
 }
 
-function showMilestone(text) {
-  const m = $("milestone");
-  m.textContent = text;
+function milestone(t){
+  const m=$("milestone");
+  m.textContent=t;
   m.classList.add("show");
-  setTimeout(() => m.classList.remove("show"), 1500);
+  setTimeout(()=>m.classList.remove("show"),1200);
 }
 
-/* =========================================================
-   GAME FLOW
-========================================================= */
-function startGame() {
-  const name = $("playerName").value.trim();
-  if (!name) {
-    setFeedback("⚠️ Please enter your name!", "wrong");
-    $("playerName").focus();
-    return;
-  }
-  
-  $("displayName").textContent = name;
-  running = true;
-  paused = false;
-  streak = 0;
-  mistakes = 0;
-  mistakesByType = { ORDER: 0, TENSE: 0, MEANING: 0 };
-  
-  updateUI();
-  resetView();
-  
-  startTime = Date.now();
-  if (timerInterval) clearInterval(timerInterval);
-  timerInterval = setInterval(updateTimer, 500);
-  
-  if (musicOn) {
-    bgm.currentTime = 0;
-    bgm.play().catch(() => {});
-  }
-  
-  $("startBtn").classList.add("active");
-  nextQuestion();
+// === GAME ===
+function start(){
+  const name=$("nameInput").value.trim();
+  if(!name){setFeedback("Enter your name!",false);return;}
+  $("playerDisplay").textContent=name;
+  running=true;paused=false;
+  streak=0;mistakes=0;errByType={ORDER:0,TENSE:0,MEANING:0};
+  updateUI();reset();
+  startT=Date.now();
+  if(timer)clearInterval(timer);
+  timer=setInterval(updateTime,500);
+  if(musicOn)bgm.play().catch(()=>{});
+  $("startBtn").classList.add("on");
+  next();
 }
 
-function resetGame() {
-  running = false;
-  paused = false;
-  if (timerInterval) clearInterval(timerInterval);
-  timerInterval = null;
-  startTime = null;
-  
-  streak = 0;
-  mistakes = 0;
-  mistakesByType = { ORDER: 0, TENSE: 0, MEANING: 0 };
-  
-  $("timerDisplay").textContent = "00:00";
-  $("displayName").textContent = "---";
-  updateUI();
-  resetView();
-  setBadge("🎮", "Ready to Start");
-  
-  bgm.pause();
-  musicOn = false;
-  $("musicBtn").textContent = "🔇 Music";
-  $("musicBtn").classList.remove("active");
-  $("startBtn").classList.remove("active");
-  
+function stop(){
+  running=false;paused=false;
+  if(timer)clearInterval(timer);timer=null;startT=null;
+  $("timeDisplay").textContent="00:00";
+  $("playerDisplay").textContent="---";
+  streak=0;mistakes=0;updateUI();reset();
+  $("typeBadge").textContent="🎮 Ready";
+  bgm.pause();musicOn=false;
+  $("musicBtn").textContent="🔇 Music";
+  $("musicBtn").classList.remove("on");
+  $("startBtn").classList.remove("on");
   $("winOverlay").classList.remove("show");
   $("pauseOverlay").classList.remove("show");
 }
 
-function nextQuestion() {
-  if (!running || paused) return;
-  resetView();
+function next(){
+  if(!running||paused)return;
+  reset();
+  const types=level==="hard"?["ORDER","TENSE","MEANING"]:["ORDER","TENSE"];
+  qType=types[Math.floor(Math.random()*types.length)];
+  curQ=BANK[Math.floor(Math.random()*BANK.length)];
   
-  const types = level === "hard" ? ["ORDER", "TENSE", "MEANING"] : ["ORDER", "TENSE"];
-  currentType = types[Math.floor(Math.random() * types.length)];
-  currentQ = BANK[Math.floor(Math.random() * BANK.length)];
-  
-  if (currentType === "ORDER") {
-    setBadge("📝", "Order the Words");
+  if(qType==="ORDER"){
+    $("typeBadge").textContent="📝 Order Words";
     renderOrder();
-  } else if (currentType === "TENSE") {
-    setBadge("🎯", "Choose the Tense");
+  }else if(qType==="TENSE"){
+    $("typeBadge").textContent="🎯 Pick Tense";
     renderTense();
-  } else {
-    setBadge("💡", "What's the Meaning?");
+  }else{
+    $("typeBadge").textContent="💡 Meaning";
     renderMeaning();
   }
 }
 
-/* =========================================================
-   ORDER MODE
-========================================================= */
-function renderOrder() {
-  show($("builtArea"));
-  show($("wordBank"));
-  show($("orderActions"));
-  
-  const tokens = shuffle(currentQ.text.split(" ").filter(Boolean));
-  const bank = $("wordBank");
-  bank.innerHTML = "";
-  
-  wordBtns = tokens.map(word => {
-    const btn = document.createElement("button");
-    btn.className = "word-btn";
-    btn.textContent = word;
-    btn.onclick = () => {
-      if (!running || paused) return;
-      built.push(word);
-      btn.disabled = true;
+// === ORDER ===
+function renderOrder(){
+  show($("builtBox"));
+  show($("wordsBox"));
+  show($("orderBtns"));
+  const box=$("wordsBox");
+  box.innerHTML="";
+  const tokens=shuffle(curQ.t.split(" ").filter(Boolean));
+  wordBtns=tokens.map(w=>{
+    const b=document.createElement("button");
+    b.className="word-btn";
+    b.textContent=w;
+    b.onclick=()=>{
+      if(!running||paused)return;
+      built.push(w);
+      b.disabled=true;
       renderBuilt();
     };
-    bank.appendChild(btn);
-    return { word, btn };
+    box.appendChild(b);
+    return {w,b};
   });
-  
   renderBuilt();
 }
 
-function renderBuilt() {
-  const area = $("builtArea");
-  area.innerHTML = "";
-  
-  if (built.length === 0) {
-    area.classList.remove("has-words");
-    area.classList.add("empty-msg");
-    area.textContent = "👆 Tap words to build your sentence...";
+function renderBuilt(){
+  const box=$("builtBox");
+  box.innerHTML="";
+  if(built.length===0){
+    box.classList.add("empty");
+    box.classList.remove("active");
+    box.textContent="👆 Tap words to build sentence...";
     return;
   }
-  
-  area.classList.add("has-words");
-  area.classList.remove("empty-msg");
-  
-  built.forEach((word, i) => {
-    const chip = document.createElement("div");
-    chip.className = "word-chip";
-    chip.textContent = word;
-    chip.onclick = () => {
-      if (!running || paused) return;
-      built.splice(i, 1);
-      const match = wordBtns.find(x => x.word === word && x.btn.disabled);
-      if (match) match.btn.disabled = false;
+  box.classList.remove("empty");
+  box.classList.add("active");
+  built.forEach((w,i)=>{
+    const c=document.createElement("div");
+    c.className="chip";
+    c.textContent=w;
+    c.onclick=()=>{
+      if(!running||paused)return;
+      built.splice(i,1);
+      const m=wordBtns.find(x=>x.w===w&&x.b.disabled);
+      if(m)m.b.disabled=false;
       renderBuilt();
     };
-    area.appendChild(chip);
+    box.appendChild(c);
   });
 }
 
-function clearOrder() {
-  built = [];
-  wordBtns.forEach(x => x.btn.disabled = false);
+function clearOrder(){
+  built=[];
+  wordBtns.forEach(x=>x.b.disabled=false);
   renderBuilt();
 }
 
-function checkOrder() {
-  if (!running || paused || !currentQ) return;
-  const attempt = built.join(" ");
-  grade(attempt === currentQ.text, { type: "ORDER", attempt, correct: currentQ.text });
+function checkOrder(){
+  if(!running||paused||!curQ)return;
+  grade(built.join(" ")===curQ.t,{picked:built.join(" "),correct:curQ.t});
 }
 
-/* =========================================================
-   TENSE MODE
-========================================================= */
-function renderTense() {
+// === TENSE ===
+function renderTense(){
   show($("sentenceBox"));
-  show($("choices"));
-  $("sentenceText").textContent = currentQ.text;
-  
-  const correct = TENSE_OPTIONS.find(t => t.key === currentQ.form);
-  const others = shuffle(TENSE_OPTIONS.filter(t => t.key !== currentQ.form)).slice(0, 3);
-  const options = shuffle([correct, ...others]);
-  
-  const colors = ["c-cyan", "c-yellow", "c-success", "c-pink", "c-purple", "c-lime"];
-  const choices = $("choices");
-  choices.innerHTML = "";
-  
-  options.forEach((opt, i) => {
-    const btn = document.createElement("button");
-    btn.className = `choice-btn ${colors[i % colors.length]}`;
-    btn.innerHTML = `<div class="choice-title">${opt.label}</div><div class="choice-desc">${opt.desc}</div>`;
-    btn.onclick = () => grade(opt.key === currentQ.form, { 
-      type: "TENSE", 
-      picked: opt.label, 
-      correct: correct.label 
-    });
-    choices.appendChild(btn);
+  show($("choicesBox"));
+  $("sentenceBox").textContent=curQ.t;
+  const correct=TENSES.find(x=>x.k===curQ.f);
+  const others=shuffle(TENSES.filter(x=>x.k!==curQ.f)).slice(0,3);
+  const opts=shuffle([correct,...others]);
+  const box=$("choicesBox");
+  box.innerHTML="";
+  const colors=["c1","c2","c3","c4"];
+  opts.forEach((o,i)=>{
+    const b=document.createElement("button");
+    b.className="choice "+colors[i];
+    b.innerHTML=`<div class="choice-title">${o.l}</div><div class="choice-desc">${o.d}</div>`;
+    b.onclick=()=>grade(o.k===curQ.f,{picked:o.l,correct:correct.l});
+    box.appendChild(b);
   });
 }
 
-/* =========================================================
-   MEANING MODE
-========================================================= */
-function renderMeaning() {
+// === MEANING ===
+const MEANINGS={
+  will:[{k:"prediction",l:"Prediction"},{k:"offer",l:"Offer"},{k:"promise",l:"Promise"},{k:"decision",l:"Decision"}],
+  going:[{k:"plan",l:"Plan"},{k:"evidence",l:"Evidence"}],
+  ps:[{k:"schedule",l:"Schedule"}],
+  pc:[{k:"arrangement",l:"Arrangement"}],
+  cond:[{k:"result",l:"Result"},{k:"plan",l:"Plan"},{k:"advice",l:"Advice"}]
+};
+
+function renderMeaning(){
   show($("sentenceBox"));
-  show($("choices"));
-  $("sentenceText").textContent = currentQ.text;
-  
-  let options = MEANING_MAP[currentQ.form] || [];
-  if (options.length < 4) {
-    options = [
-      { key: "prediction", label: "Prediction", desc: "Guess about future" },
-      { key: "plan", label: "Plan", desc: "Already decided" },
-      { key: "schedule", label: "Schedule", desc: "Fixed timetable" },
-      { key: "offer_promise", label: "Offer/Promise", desc: "Help or promise" }
-    ];
+  show($("choicesBox"));
+  $("sentenceBox").textContent=curQ.t;
+  let opts=MEANINGS[curQ.f]||[];
+  if(opts.length<4){
+    opts=[{k:"prediction",l:"Prediction"},{k:"plan",l:"Plan"},{k:"schedule",l:"Schedule"},{k:"offer",l:"Offer"}];
   }
-  options = shuffle(options).slice(0, 4);
-  
-  const correctLabel = (MEANING_MAP[currentQ.form]?.find(m => m.key === currentQ.intent)?.label) || currentQ.intent;
-  const colors = ["c-cyan", "c-yellow", "c-success", "c-pink"];
-  const choices = $("choices");
-  choices.innerHTML = "";
-  
-  options.forEach((opt, i) => {
-    const btn = document.createElement("button");
-    btn.className = `choice-btn ${colors[i]}`;
-    btn.innerHTML = `<div class="choice-title">${opt.label}</div><div class="choice-desc">${opt.desc}</div>`;
-    btn.onclick = () => grade(opt.key === currentQ.intent, {
-      type: "MEANING",
-      picked: opt.label,
-      correct: correctLabel
-    });
-    choices.appendChild(btn);
+  opts=shuffle(opts).slice(0,4);
+  const correctLbl=(MEANINGS[curQ.f]?.find(x=>x.k===curQ.m)?.l)||curQ.m;
+  const box=$("choicesBox");
+  box.innerHTML="";
+  const colors=["c1","c2","c3","c4"];
+  opts.forEach((o,i)=>{
+    const b=document.createElement("button");
+    b.className="choice "+colors[i];
+    b.innerHTML=`<div class="choice-title">${o.l}</div>`;
+    b.onclick=()=>grade(o.k===curQ.m,{picked:o.l,correct:correctLbl});
+    box.appendChild(b);
   });
 }
 
-/* =========================================================
-   GRADING
-========================================================= */
-function grade(correct, detail) {
-  if (!running || paused) return;
-  
-  const player = $("displayName").textContent;
-  const time = Math.floor(nowMs() / 1000);
-  
-  if (correct) {
+// === GRADE ===
+function grade(ok,detail){
+  if(!running||paused)return;
+  if(ok){
     streak++;
     updateUI();
-    setFeedback("✅ Correct! Great job!", "correct");
-    
-    // Milestones
-    if (streak === 5) showMilestone("🔥 5 in a row!");
-    if (streak === 10) showMilestone("⚡ 10 streak!");
-    if (streak === 15) showMilestone("🌟 15! Almost there!");
-    if (streak === 20) showMilestone("💪 20! So close!");
-    
-    sendToGoogleSheets({
-      type: "ATTEMPT", student: player, time_seconds: time,
-      correct: true, streak, question_type: currentType,
-      sentence: currentQ.text, tense: currentQ.form
-    });
-    
-    if (streak >= GOAL) {
-      winGame();
-      return;
-    }
-    
-    setTimeout(() => { if (running && !paused) nextQuestion(); }, 700);
-    return;
+    setFeedback("✅ Correct!",true);
+    if(streak===5)milestone("🔥 5 streak!");
+    if(streak===10)milestone("⚡ 10 streak!");
+    if(streak===15)milestone("🌟 15! Almost!");
+    if(streak===20)milestone("💪 20! So close!");
+    if(streak>=GOAL){win();return;}
+    setTimeout(()=>{if(running&&!paused)next();},600);
+  }else{
+    mistakes++;
+    errByType[qType]++;
+    streak=0;
+    updateUI();
+    setFeedback(`❌ Wrong! → ${detail.correct}`,false);
+    if(qType==="ORDER")clearOrder();
+    setTimeout(()=>{if(running&&!paused)next();},1400);
   }
-  
-  // Wrong
-  mistakes++;
-  mistakesByType[currentType]++;
-  streak = 0;
-  updateUI();
-  setFeedback(`❌ Wrong! Correct: ${detail.correct}`, "wrong");
-  
-  sendToGoogleSheets({
-    type: "ATTEMPT", student: player, time_seconds: time,
-    correct: false, streak: 0, question_type: currentType,
-    sentence: currentQ.text, tense: currentQ.form,
-    picked_answer: detail.picked || detail.attempt,
-    correct_answer: detail.correct
-  });
-  
-  if (currentType === "ORDER") clearOrder();
-  
-  setTimeout(() => { if (running && !paused) nextQuestion(); }, 1500);
+  sendSheet(ok,detail);
 }
 
-function winGame() {
-  running = false;
-  if (timerInterval) clearInterval(timerInterval);
+function win(){
+  running=false;
+  if(timer)clearInterval(timer);
   bgm.pause();
-  
-  const player = $("displayName").textContent;
-  const time = formatTime(nowMs());
-  
-  $("summary").innerHTML = `
-    <div class="summary-row"><span>Player</span><span class="summary-val">${player}</span></div>
-    <div class="summary-row"><span>Time</span><span class="summary-val">${time}</span></div>
-    <div class="summary-row"><span>Total Mistakes</span><span class="summary-val ${mistakes > 0 ? 'bad' : ''}">${mistakes}</span></div>
-    <div class="summary-row"><span>ORDER mistakes</span><span class="summary-val ${mistakesByType.ORDER > 0 ? 'bad' : ''}">${mistakesByType.ORDER}</span></div>
-    <div class="summary-row"><span>TENSE mistakes</span><span class="summary-val ${mistakesByType.TENSE > 0 ? 'bad' : ''}">${mistakesByType.TENSE}</span></div>
-    <div class="summary-row"><span>MEANING mistakes</span><span class="summary-val ${mistakesByType.MEANING > 0 ? 'bad' : ''}">${mistakesByType.MEANING}</span></div>
-    <div class="summary-row"><span>Level</span><span class="summary-val">${level}</span></div>
+  const t=$("timeDisplay").textContent;
+  $("summary").innerHTML=`
+    <div><span>Player</span><span class="val">${$("playerDisplay").textContent}</span></div>
+    <div><span>Time</span><span class="val">${t}</span></div>
+    <div><span>Mistakes</span><span class="val ${mistakes>0?'bad':''}">${mistakes}</span></div>
+    <div><span>ORDER</span><span class="val ${errByType.ORDER>0?'bad':''}">${errByType.ORDER}</span></div>
+    <div><span>TENSE</span><span class="val ${errByType.TENSE>0?'bad':''}">${errByType.TENSE}</span></div>
+    <div><span>MEANING</span><span class="val ${errByType.MEANING>0?'bad':''}">${errByType.MEANING}</span></div>
   `;
-  
   $("winOverlay").classList.add("show");
-  
-  sendToGoogleSheets({
-    type: "SESSION_COMPLETE", student: player,
-    time_seconds: Math.floor(nowMs() / 1000),
-    total_mistakes: mistakes,
-    order_mistakes: mistakesByType.ORDER,
-    tense_mistakes: mistakesByType.TENSE,
-    meaning_mistakes: mistakesByType.MEANING,
-    level
-  });
+  sendSheet(true,{final:true,total_mistakes:mistakes});
 }
 
-/* =========================================================
-   CONTROLS
-========================================================= */
-function setLevel(l) {
-  level = l;
-  $("easyBtn").classList.toggle("active", l === "easy");
-  $("hardBtn").classList.toggle("active", l === "hard");
+// === SHEETS ===
+function sendSheet(ok,detail){
+  if(!SHEET_URL||SHEET_URL.includes("YOUR_"))return;
+  fetch(SHEET_URL,{
+    method:"POST",mode:"no-cors",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      secret:SECRET,
+      student:$("playerDisplay").textContent,
+      correct:ok,streak,mistakes,
+      type:qType,sentence:curQ?.t,
+      detail:JSON.stringify(detail)
+    })
+  }).catch(()=>{});
 }
 
-function toggleMusic() {
-  bgm.volume = 0.3;
-  if (!musicOn) {
-    bgm.play().then(() => {
-      musicOn = true;
-      $("musicBtn").textContent = "🔊 Music";
-      $("musicBtn").classList.add("active");
-    }).catch(() => {});
-  } else {
+// === CONTROLS ===
+function setLevel(l){
+  level=l;
+  $("easyBtn").classList.toggle("on",l==="easy");
+  $("hardBtn").classList.toggle("on",l==="hard");
+}
+
+function toggleMusic(){
+  bgm.volume=0.3;
+  if(!musicOn){
+    bgm.play().then(()=>{
+      musicOn=true;
+      $("musicBtn").textContent="🔊 Music";
+      $("musicBtn").classList.add("on");
+    }).catch(()=>{});
+  }else{
     bgm.pause();
-    musicOn = false;
-    $("musicBtn").textContent = "🔇 Music";
-    $("musicBtn").classList.remove("active");
+    musicOn=false;
+    $("musicBtn").textContent="🔇 Music";
+    $("musicBtn").classList.remove("on");
   }
 }
 
-function togglePause() {
-  if (!running) return;
-  if (paused) {
-    paused = false;
+function togglePause(){
+  if(!running)return;
+  if(paused){
+    paused=false;
     $("pauseOverlay").classList.remove("show");
-    if (musicOn) bgm.play().catch(() => {});
-  } else {
-    paused = true;
+    if(musicOn)bgm.play().catch(()=>{});
+  }else{
+    paused=true;
     $("pauseOverlay").classList.add("show");
     bgm.pause();
   }
 }
 
-/* =========================================================
-   EVENTS
-========================================================= */
-$("startBtn").onclick = startGame;
-$("resetBtn").onclick = resetGame;
-$("easyBtn").onclick = () => setLevel("easy");
-$("hardBtn").onclick = () => setLevel("hard");
-$("musicBtn").onclick = toggleMusic;
-$("pauseBtn").onclick = togglePause;
-$("clearBtn").onclick = clearOrder;
-$("checkBtn").onclick = checkOrder;
-$("resumeBtn").onclick = togglePause;
-$("exitBtn").onclick = resetGame;
-$("playAgainBtn").onclick = () => {
-  $("winOverlay").classList.remove("show");
-  resetGame();
-};
+// === EVENTS ===
+$("startBtn").onclick=start;
+$("resetBtn").onclick=stop;
+$("easyBtn").onclick=()=>setLevel("easy");
+$("hardBtn").onclick=()=>setLevel("hard");
+$("pauseBtn").onclick=togglePause;
+$("musicBtn").onclick=toggleMusic;
+$("clearBtn").onclick=clearOrder;
+$("checkBtn").onclick=checkOrder;
+$("resumeBtn").onclick=togglePause;
+$("quitBtn").onclick=stop;
+$("againBtn").onclick=()=>{$("winOverlay").classList.remove("show");stop();};
+$("nameInput").onkeypress=e=>{if(e.key==="Enter"&&!running)start();};
 
-// Enter key to start
-$("playerName").addEventListener("keypress", e => {
-  if (e.key === "Enter" && !running) startGame();
-});
-
-// Init
+// === INIT ===
 setLevel("easy");
 updateUI();
 </script>
