@@ -362,11 +362,18 @@
       font-weight: 900;
       font-size: 0.9rem;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s;
     }
 
-    .btn-orange { background: var(--orange); color: #fff; }
-    .btn-gray { background: var(--card); color: var(--text); }
-    .btn-yellow { background: var(--yellow); color: #000; }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-orange { background: linear-gradient(135deg, #ff6b6b, #ff8e53); color: #fff; }
+    .btn-gray { background: rgba(255, 255, 255, 0.25); color: var(--text); }
+    .btn-yellow { background: linear-gradient(135deg, #ffd93d, #ffed4e); color: #333; }
 
     /* CONTROLS */
     .controls {
