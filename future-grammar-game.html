@@ -383,7 +383,8 @@
     }
 
     .ctrl {
-      background: var(--surface);
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
       border: none;
       border-radius: 10px;
       padding: 10px 8px;
@@ -393,10 +394,19 @@
       font-size: 0.75rem;
       cursor: pointer;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
     }
 
-    .ctrl:hover { background: var(--card); }
-    .ctrl.on { background: var(--green); color: #000; }
+    .ctrl:hover { 
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+    }
+    .ctrl.on { 
+      background: linear-gradient(135deg, #95e1d3, #6dd5c3); 
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(149, 225, 211, 0.5);
+    }
 
     /* OVERLAY */
     .overlay {
